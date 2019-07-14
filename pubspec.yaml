@@ -10,6 +10,7 @@ dependencies:
   shrine_images: 1.1.1
 
 dev_dependencies:
+  cloud_firestore :
   flutter_test:
     sdk: flutter
 
