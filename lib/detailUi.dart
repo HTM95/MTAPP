@@ -93,7 +93,7 @@ class _ProductDetailState extends State<ProductDetailUI> {
                     Positioned.fill(
                         child: GestureDetector(
                           onHorizontalDragEnd: (DragEndDetails details){
-                            if(details.velocity.pixelsPerSecond.dx>0){
+                      if(details.velocity.pixelsPerSecond.dx>0){
                               _prevImage();
                               print('prev');
                             }

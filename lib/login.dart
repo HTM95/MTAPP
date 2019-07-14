@@ -1,93 +1,161 @@
-// Copyright 2018-present the Flutter authors. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-// http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
+class Login extends StatefulWidget {
+
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _LoginState createState() => _LoginState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  // TODO: Add text editing controllers (101)
-  final _usernameContoller = TextEditingController();
-  final _passwordController = TextEditingController();
+class _LoginState extends State<Login> {
+
+  TextEditingController emailEditingController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: ListView(
-          padding: EdgeInsets.symmetric(horizontal: 24.0),
-          children: <Widget>[
-            SizedBox(height: 80.0),
-            Column(
+      resizeToAvoidBottomPadding: false,
+      body: Center(
+        child: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              //image: AssetImage("assets/images/login.png"),
+              image: AssetImage("assets/background.png"),
+              fit: BoxFit.cover,
+            ),
+          ),
+          //color: Colors.white,
+          padding: EdgeInsets.only(top: 60),
+          child: Center(
+            child: Stack(
               children: <Widget>[
-                Image.asset('assets/diamond.png'),
-                SizedBox(height: 16.0),
-                Text('Marine Turquoise'),
-              ],
-            ),
-            SizedBox(height: 120.0),
-            // TODO: Wrap Username with AccentColorOverride (103)
-            // TODO: Remove filled: true values (103)
-            // TODO: Wrap Password with AccentColorOverride (103)
-            // TODO: Add TextField widgets (101)
-            //[Name]
-            TextField(
-              controller: _usernameContoller,
-              decoration: InputDecoration(
-                filled: true,
-                labelText: 'Username',
-              ),
-            ),
-            //Spacer
-            SizedBox(height: 12.0),
-            //[Password]
-            TextField(
-              controller: _passwordController,
-              decoration: InputDecoration(
-              filled: true,
-              labelText: 'Password',
-            ),
-              obscureText: true,
-            ),
-
-            // TODO: Add button bar (101)
-            ButtonBar(
-              children: <Widget>[
-                //TODO : add Buttons
-                FlatButton(
-                  child: Text('Cancel'),
-                  onPressed: (){
-                    _usernameContoller.clear();
-                    _passwordController.clear();
-                  },
+                SizedBox(
+                  height: 80,
                 ),
-                RaisedButton(
-                  child: Text('Login'),
-                  elevation: 8.0,
-                  onPressed: (){
-                    Navigator.pop(context);
-                  },
-                )
+                Positioned(
+                  top: 60.0,
+                  left: 100,
+                  child: SizedBox(
+                    //width: 74,
+                    height: 100,
+                    child: Text("Connexion",
+                      style: TextStyle(
+                        fontSize: 28,
+                        color: Colors.lightBlue,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Calibri',
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  child : Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Container(
+                        margin: const EdgeInsets.only(left: 30),
+                        /*decoration: new BoxDecoration(
+                          border: Border.all(
+                              width: 0.5
+                          ),
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(25) //                 <--- border radius here
+                          ),
+                        ),*/
+                        child: Column(
+                          children: <Widget>[
+                            //BorderRadius.all(Radius.circular(25)),
+                            TextField(
+                              autofocus: false,
+                              obscureText: false,
+                              keyboardType: TextInputType.emailAddress,
+                              //controller: emailEditingController,
+                              decoration: InputDecoration(
+                                //labelText: "Email",
+                                  hintText: "Email",
+                                  labelStyle: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                  ),
+                                  border: OutlineInputBorder(
+                                    //borderRadius: BorderRadius.all(Radius.circular(25)),
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: const Radius.circular(25.0),
+                                          topRight: const Radius.circular(25.0)
+                                      ),
+                                      borderSide: BorderSide(color: Colors.greenAccent, width: 5.0)
+                                  )
+                              ),
+                            ),
+                            TextField(
+                              autofocus: false,
+                              obscureText: true,
+                              keyboardType: TextInputType.text,
+                              //controller: emailEditingController,
+                              decoration: InputDecoration(
+                                //labelText: "Password",
+                                  hintText: "Password",
+                                  labelStyle: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.only(
+                                        bottomLeft: const Radius.circular(25.0),
+                                        bottomRight: const Radius.circular(25.0)
+                                    ),
+                                  )
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(right: 15),
+                      child: new FloatingActionButton(
+                          backgroundColor: Colors.lightBlue,
+                          child: Icon(Icons.arrow_right),
+                          mini: true,
+                          onPressed: () => {
+                            Navigator.pop(context),
+                          }
+                      ),
+                    ),
+                  ],
+                ),
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                Positioned(
+                    left: 0.0,
+                    bottom: 130.0,
+                child :ButtonTheme(
+                  minWidth: 150,
+                  shape: StadiumBorder(),
+                  child: MaterialButton(
+                    onPressed: () => {
+                      Navigator.of(context).pushNamed('/register')
+                    },
+                    textColor: Colors.lightBlue,
+                    color: Colors.white,
+                    height: 50,
+                    child: Text("S'inscrire",
+                      style: TextStyle(
+                        fontSize: 17,
+                        color: Colors.lightBlue,
+                        fontWeight: FontWeight.bold,
+                      ),),
+                  ),
+                ),
+                ),
               ],
-            )
-          ],
+            ),
+          ),
         ),
       ),
     );
   }
-}
 
-// TODO: Add AccentColorOverride (103)
+
+}

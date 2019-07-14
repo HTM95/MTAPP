@@ -1,42 +1,93 @@
 {
   "project_info": {
-    "project_number": "496342211321",
-    "firebase_url": "https://marineturquoise-39454.firebaseio.com",
-    "project_id": "marineturquoise-39454",
-    "storage_bucket": "marineturquoise-39454.appspot.com"
+    "project_number": "527818211584",
+    "firebase_url": "https://marineturquoise.firebaseio.com",
+    "project_id": "marineturquoise",
+    "storage_bucket": "marineturquoise.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:496342211321:android:c9233f5ef928aaec",
+        "mobilesdk_app_id": "1:527818211584:android:59008b6ab924988c",
         "android_client_info": {
-          "package_name": "com.example.mdc100series"
+          "package_name": "com.example.flutter_login"
         }
       },
       "oauth_client": [
         {
-          "client_id": "496342211321-v4aftslijkjc7i79fonb6ecp62d969eg.apps.googleusercontent.com",
+          "client_id": "527818211584-snmh3gjgckchu4ca6umi0vpt5ouid01q.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBZ7IP9Vw2YDVMpOEiLHx863TPFO_ZVS-A"
+          "current_key": "AIzaSyCmmTA-CCGy1xDxLH1HwF-ZTdGaKorMEgU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "496342211321-v4aftslijkjc7i79fonb6ecp62d969eg.apps.googleusercontent.com",
+              "client_id": "527818211584-snmh3gjgckchu4ca6umi0vpt5ouid01q.apps.googleusercontent.com",
               "client_type": 3
-            },
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:527818211584:android:f5c12c2999af863c",
+        "android_client_info": {
+          "package_name": "com.example.free_sms"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "527818211584-snmh3gjgckchu4ca6umi0vpt5ouid01q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmmTA-CCGy1xDxLH1HwF-ZTdGaKorMEgU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
             {
-              "client_id": "496342211321-jlc3o15908hdej92qovof9c27vn380le.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.marineturquoise"
-              }
+              "client_id": "527818211584-snmh3gjgckchu4ca6umi0vpt5ouid01q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:527818211584:android:c9233f5ef928aaec",
+        "android_client_info": {
+          "package_name": "com.example.mdc100series"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "527818211584-snmh3gjgckchu4ca6umi0vpt5ouid01q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmmTA-CCGy1xDxLH1HwF-ZTdGaKorMEgU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "527818211584-snmh3gjgckchu4ca6umi0vpt5ouid01q.apps.googleusercontent.com",
+              "client_type": 3
             }
           ]
         }
