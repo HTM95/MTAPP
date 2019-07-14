@@ -17,7 +17,7 @@ import 'package:flutter/material.dart';
 //import 'home.dart';
 import 'home2.dart';
 import 'products.dart';
-import 'detail.dart';
+//import 'detail.dart';
 //import 'login.dart';
 import 'colors.dart';
 import 'backdrop.dart';
@@ -25,6 +25,7 @@ import 'menu_page.dart';
 import 'model/product.dart';
 import 'first_screen.dart';
 import 'register.dart';
+import 'detailUi.dart';
 // TODO: Build a Shrine Theme (103)
 final ThemeData _kShrineTheme = _buildShrineTheme();
 
@@ -103,7 +104,8 @@ class _ShrineAppState extends State<ShrineApp> {
           frontTitle: Text('Marine Turquoise'),
           backTitle: Text('Menu'),
         ),
-        '/details': (BuildContext context) => ProductDetail(),
+        //'/details': (BuildContext context) => ProductDetail(),
+        '/details': (BuildContext context) => ProductDetailUI(),
         '/register': (BuildContext context) => UserRegister(),
       },
       // TODO: Make currentCategory field take _currentCategory (104)
