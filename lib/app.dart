@@ -18,14 +18,16 @@ import 'package:flutter/material.dart';
 import 'home2.dart';
 import 'products.dart';
 //import 'detail.dart';
-import 'login.dart';
+//import 'login.dart';
 import 'colors.dart';
 import 'backdrop.dart';
 import 'menu_page.dart';
 import 'model/product.dart';
-import 'first_screen.dart';
-import 'register.dart';
+//import 'first_screen.dart';
+//import 'register.dart';
 import 'detailUi.dart';
+import 'register_with_firebase.dart';
+import 'login_with_firebase.dart';
 // TODO: Build a Shrine Theme (103)
 final ThemeData _kShrineTheme = _buildShrineTheme();
 
@@ -125,7 +127,7 @@ class _ShrineAppState extends State<ShrineApp> {
 
     return MaterialPageRoute<void>(
       settings: settings,
-      builder: (BuildContext context) => Login(),
+      builder: (BuildContext context) => UserLogin(),
       fullscreenDialog: true,
     );
   }
