@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:toast/toast.dart';
 
 class UserRegister extends StatefulWidget{
   
@@ -255,20 +256,22 @@ class _UserRegisterState extends State<UserRegister>{
     if(formState.validate()){
       formState.save();
       try{
-        FirebaseUser user = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailController.text, password: pwdController.text);
+        FirebaseUser user = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailController.text.trim(), password: pwdController.text);
         print('Inscrit !');
+        FirebaseUser user1 = await FirebaseAuth.instance.currentUser();
+        Firestore.instance.collection('utilisateurs').document(user1.uid)
+            .setData(
+            { 'nom': nameController.text,
+              'email': emailController.text,
+              'tel': telController.text,
+              'motdepasse': pwdController.text,
+              'categorie': _currentItemSelected
+            });
       }catch(e){
-        print(e.message);
+        //print(e.message);
+        Toast.show(e.message, context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
       }
     }
-    FirebaseUser user = await FirebaseAuth.instance.currentUser();
-    Firestore.instance.collection('utilisateurs').document(user.uid)
-        .setData(
-        { 'nom': nameController.text,
-          'email': emailController.text,
-          'tel': telController.text,
-          'motdepasse': pwdController.text
-        });
     
   }
 

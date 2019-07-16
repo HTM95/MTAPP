@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:toast/toast.dart';
 
 class UserLogin extends StatefulWidget {
 
@@ -189,7 +190,7 @@ class _UserLoginState extends State<UserLogin> {
       formState.save();
       try{
         FirebaseUser user = await FirebaseAuth.instance.signInWithEmailAndPassword(email: emailController.text, password: pwdController.text);
-        print('Connecté');
+        Toast.show('Connecté', context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
         Navigator.pop(context);
       }catch(e){
         print(e.message);
