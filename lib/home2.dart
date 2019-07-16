@@ -74,13 +74,14 @@ class HomePage2 extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: Column(
+        child: Center(
+          child: Column(
           children: <Widget>[
             SizedBox(height: 130,),
             Row(
               children : [
               Padding(
-              padding: EdgeInsets.all(10.0),
+              padding: EdgeInsets.all( MediaQuery.of(context).size.height * 0.013),
             child :_buildBox('assets/tiles.jpg',0.3,0.45,'TILES'),
             ),
             Padding(
@@ -96,6 +97,7 @@ class HomePage2 extends StatelessWidget {
           ],
         )
         ),
-      );
+      )
+    );
   }
 }

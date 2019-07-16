@@ -61,7 +61,7 @@ class ProductsPage extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                       ),
-                      SizedBox(height: 4.0),
+                      SizedBox(height: 1.0),
                       Text(
                         product == null ? '' : formatter.format(product.price),
                         style: theme.textTheme.caption,
@@ -69,10 +69,10 @@ class ProductsPage extends StatelessWidget {
                       ),
                       IconButton(
                         // padding: EdgeInsets.fromLTRB(130.0, 0.0, 0.0, 0.0),
-                        iconSize: 35.0,
+                        //iconSize: 25.0,
                         icon: Icon(
                           Icons.shopping_basket,
-                          size: 25.0,
+                          size:  MediaQuery.of(context).size.height * 0.035,
                           color: Color(0xFF0D47A1),
                           semanticLabel: 'search',
                         ),
@@ -100,7 +100,7 @@ class ProductsPage extends StatelessWidget {
         crossAxisCount: 2,
         padding: EdgeInsets.all(16.0),
         //Size
-        childAspectRatio: 8.0/9.0,
+        childAspectRatio: 8.0/9.5,
         //TODO : Build a gride of cards
         children: _buildGridCards(context)
     );
