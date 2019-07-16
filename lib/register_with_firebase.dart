@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserRegister extends StatefulWidget{
   
@@ -262,18 +262,23 @@ class _UserRegisterState extends State<UserRegister>{
       }
     }
     FirebaseUser user = await FirebaseAuth.instance.currentUser();
-    //addUser(user.uid);
-    print("USER : "+user.uid);
+    Firestore.instance.collection('utilisateurs').document(user.uid)
+        .setData(
+        { 'nom': nameController.text,
+          'email': emailController.text,
+          'tel': telController.text,
+          'motdepasse': pwdController.text
+        });
     
   }
 
-  void addUser(String uid) async{
+  /*void addUser(String uid) async{
     Future<void> _userRef = FirebaseDatabase.instance.reference().child('users').child(uid).set({
       'name': nameController,
       'email': emailController,
       'tel': telController,
       'password': pwdController
     });
-  }
+  }*/
 
 }
