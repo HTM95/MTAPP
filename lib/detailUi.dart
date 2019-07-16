@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 //import 'PageIndicator.dart';
+import 'model/products_repository.dart';
+import 'model/product.dart';
 
 class ProductDetailUI extends StatefulWidget{
   _ProductDetailState createState()=> new _ProductDetailState();
 }
 
 class _ProductDetailState extends State<ProductDetailUI> {
+
   int currentIndex = 0;
   void _nextImage(){
     setState(() {
@@ -29,6 +32,8 @@ class _ProductDetailState extends State<ProductDetailUI> {
 
   @override
   Widget build(BuildContext context) {
+    int productId = ModalRoute.of(context).settings.arguments;
+    Product product = ProductsRepository.findProd(productId);
     // TODO: implement build
     return new Scaffold(
       body: Stack(
@@ -42,7 +47,9 @@ class _ProductDetailState extends State<ProductDetailUI> {
                 child: Stack(
                   fit: StackFit.expand,
                   children: <Widget>[
-                    Image.asset('assets/tiles.jpg' , fit: BoxFit.cover,),
+                    Image.asset( product.assetName,
+                      package: product.assetPackage,
+                      fit: BoxFit.cover,),
                     //Image.asset(productImage[currentIndex])
                     Positioned(
                       top: 40.0,
@@ -60,7 +67,7 @@ class _ProductDetailState extends State<ProductDetailUI> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text('Nom Produit' ,
+                          Text(product.name ,
                           style: TextStyle(
                             fontSize: 32,
                             fontFamily: "Montserrat-Bold",
@@ -73,7 +80,7 @@ class _ProductDetailState extends State<ProductDetailUI> {
                           //TODO : currentindex
                           ),
                           SizedBox(height: 40,),
-                          Text('Prix' , style: TextStyle(
+                          Text( product.price.toString() , style: TextStyle(
                             //TODO : currentindex
                             fontSize: 35,
                             fontFamily: "Montserrat-Bold",

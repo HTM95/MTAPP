@@ -33,7 +33,9 @@ class ProductsPage extends StatelessWidget {
         clipBehavior: Clip.antiAlias,
         child : GestureDetector(
           onTap: (){
-            Navigator.pushNamed(context, '/details');
+            Navigator.pushNamed(context, '/details',
+             arguments: product.id,
+            );
           },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -69,12 +71,13 @@ class ProductsPage extends StatelessWidget {
                         // padding: EdgeInsets.fromLTRB(130.0, 0.0, 0.0, 0.0),
                         iconSize: 35.0,
                         icon: Icon(
-                          Icons.add_circle_outline,
+                          Icons.shopping_basket,
                           size: 25.0,
+                          color: Color(0xFF0D47A1),
                           semanticLabel: 'search',
                         ),
+                        //TODO : Add popup to select qte
                         onPressed: (){
-                          print('Hello2');
                         },
                       ),
                     ],
