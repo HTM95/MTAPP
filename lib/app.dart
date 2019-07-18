@@ -15,6 +15,7 @@
 import 'package:flutter/material.dart';
 
 //import 'home.dart';
+import 'emailConfirm.dart';
 import 'home2.dart';
 import 'products.dart';
 //import 'detail.dart';
@@ -109,6 +110,7 @@ class _ShrineAppState extends State<ShrineApp> {
         //'/details': (BuildContext context) => ProductDetail(),
         '/details': (BuildContext context) => ProductDetailUI(),
         '/register': (BuildContext context) => UserRegister(),
+        '/emailConfirm' : (BuildContext context) => EmailConfirmation(),
       },
       // TODO: Make currentCategory field take _currentCategory (104)
       // TODO: Pass _currentCategory for frontLayer (104)
