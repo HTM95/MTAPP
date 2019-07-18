@@ -57,7 +57,7 @@ class HomePage2 extends StatelessWidget {
                   children: <Widget>[
                     Text(
                         Titre,
-                      style: TextStyle(color: Colors.white,fontSize: 25.0),
+                      style: TextStyle(color: Colors.white,fontSize: 20.0),
                     ),
                   ],
                 ),
@@ -81,7 +81,7 @@ class HomePage2 extends StatelessWidget {
             Row(
               children : [
               Padding(
-              padding: EdgeInsets.all( MediaQuery.of(context).size.height * 0.013),
+              padding: EdgeInsets.all( MediaQuery.of(context).size.height * 0.011),
             child :_buildBox('assets/tiles.jpg',0.3,0.45,'TILES'),
             ),
             Padding(

@@ -47,6 +47,9 @@ class _FrontLayer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           // TODO: Add a GestureDetector (104)
+          SizedBox(
+          height: 60,
+      ),
           Expanded(
             child: child,
           ),

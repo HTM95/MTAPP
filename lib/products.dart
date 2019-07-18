@@ -17,10 +17,18 @@ import 'package:intl/intl.dart';
 import 'supplemental/asymmetric_view.dart';
 import 'model/products_repository.dart';
 import 'model/product.dart';
-class ProductsPage extends StatelessWidget {
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+class ProductsPage extends StatefulWidget{
+  _ProductsPageState createState()=> _ProductsPageState();
+}
+
+class _ProductsPageState extends State<ProductsPage> {
+
   // TODO: Make a collection of cards (102)
   List<Card> _buildGridCards(BuildContext context){
-    List<Product> products = ProductsRepository.loadProducts(Category.all);
+
+   List<Product> products = ProductsRepository.loadProducts(Category.all);
 
     if(products == null || products.isEmpty){
       return const <Card>[];
@@ -104,6 +112,7 @@ class ProductsPage extends StatelessWidget {
         //TODO : Build a gride of cards
         children: _buildGridCards(context)
     );
+
     // TODO: Pass Category variable to AsymmetricView (104)
    /* return Scaffold(
       // TODO: Add app bar (102)
