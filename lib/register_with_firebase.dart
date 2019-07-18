@@ -264,7 +264,6 @@ class _UserRegisterState extends State<UserRegister>{
             { 'nom': nameController.text,
               'email': emailController.text,
               'tel': telController.text,
-              'motdepasse': pwdController.text,
               'categorie': _currentItemSelected
             });
       }catch(e){

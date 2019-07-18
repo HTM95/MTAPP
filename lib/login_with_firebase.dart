@@ -174,7 +174,9 @@ class _UserLoginState extends State<UserLogin> {
                     fontSize: 11,
                     color: Colors.lightBlue,
                   ),), 
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('/emailConfirm');
+                  },
                 ),
               ],
             ),
@@ -193,7 +195,8 @@ class _UserLoginState extends State<UserLogin> {
         Toast.show('Connecté', context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
         Navigator.pop(context);
       }catch(e){
-        print(e.message);
+        //print(e.message);
+        Toast.show(e.message, context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
       }
     }
   }
