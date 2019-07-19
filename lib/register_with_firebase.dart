@@ -67,8 +67,7 @@ class _UserRegisterState extends State<UserRegister>{
                     ),
                   ),
                 ),
-                Expanded(
-                  child: Container(
+                Container(
                     margin: const EdgeInsets.only(left: 30, right: 30),
                       decoration: new BoxDecoration(
                         border: Border.all(
@@ -79,6 +78,8 @@ class _UserRegisterState extends State<UserRegister>{
                       ),
                       ),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           TextField(
                           autofocus: false,
@@ -220,7 +221,7 @@ class _UserRegisterState extends State<UserRegister>{
                         ],
                       ),
                   ),
-                ),
+
                 SizedBox(
                   height: 29,
                 ),
