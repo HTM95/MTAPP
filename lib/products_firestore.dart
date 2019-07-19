@@ -29,75 +29,79 @@ class Produit{
 class _ProductsPageStateFS extends State<ProductsPageFS> {
 
 
-
   Widget _buildListItem2(BuildContext context , DocumentSnapshot document ){
-    return  GestureDetector(
-            onTap: (){
-             Navigator.pushNamed(context, '/details',
-              arguments: Produit(document['NomProd'].toString(),document['Id'].toString(),document['Prix'].toString(),document['Image'].toString())
-             );
-      },
-           child : Card(
-             clipBehavior: Clip.antiAlias,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            AspectRatio(
-              aspectRatio: 18/9,
-              child : Image.network(
-               document['Image'].toString(),
-                fit: BoxFit.fitWidth,
-              ),
-            ),
-            Expanded(
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 0.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      document['NomProd'],
-                      //style: theme.textTheme.button,
-                      softWrap: false,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                    ),
-                    SizedBox(height: 1.0),
-                    Text(
-                     document['Prix'].toString()
-                    ),
-                    IconButton(
-                      // padding: EdgeInsets.fromLTRB(130.0, 0.0, 0.0, 0.0),
-                      //iconSize: 25.0,
-                      icon: Icon(
-                        Icons.shopping_basket,
-                        size:  MediaQuery.of(context).size.height * 0.035,
-                        color: Color(0xFF0D47A1),
-                        semanticLabel: 'search',
-                      ),
-                      //TODO : Add popup to select qte
-                      onPressed: (){
-                      },
-                    ),
-                  ],
+
+      return GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, '/details',
+              arguments: Produit(
+                  document['NomProd'].toString(), document['Id'].toString(),
+                  document['Prix'].toString(), document['Image'].toString())
+          );
+        },
+        child: Card(
+          clipBehavior: Clip.antiAlias,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              AspectRatio(
+                aspectRatio: 18 / 9,
+                child: Image.network(
+                  document['Image'].toString(),
+                  fit: BoxFit.fitWidth,
                 ),
               ),
-            )
-          ],
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 0.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        document['NomProd'],
+                        //style: theme.textTheme.button,
+                        softWrap: false,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                      ),
+                      SizedBox(height: 1.0),
+                      Text(
+                          document['Prix'].toString()
+                      ),
+                      IconButton(
+                        // padding: EdgeInsets.fromLTRB(130.0, 0.0, 0.0, 0.0),
+                        //iconSize: 25.0,
+                        icon: Icon(
+                          Icons.shopping_basket,
+                          size: MediaQuery
+                              .of(context)
+                              .size
+                              .height * 0.035,
+                          color: Color(0xFF0D47A1),
+                          semanticLabel: 'search',
+                        ),
+                        //TODO : Add popup to select qte
+                        onPressed: () {},
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
-      ),
-       );
-
+      );
   }
 
   // TODO: Add a variable for Category (104)
   @override
   Widget build(BuildContext context) {
+    String categ = ModalRoute.of(context).settings.arguments;
     // TODO: Return an AsymmetricView (104)
     // return  AsymmetricView(products: ProductsRepository.loadProducts(Category.all));
     return
           StreamBuilder(
-          stream: Firestore.instance.collection('products').snapshots(),
+          stream: Firestore.instance.collection('products').where('Categorie' , isEqualTo: categ).snapshots(),
           builder: (context , snapshot){
             if(!snapshot.hasData) return const Text('Loading ...');
             return GridView.builder(

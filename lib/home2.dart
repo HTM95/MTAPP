@@ -31,7 +31,7 @@ class HomePage2 extends StatelessWidget {
           borderRadius: new BorderRadius.circular(35.0),
           child :GestureDetector(
             onTap: (){
-              Navigator.pushNamed(context, '/products');
+              Navigator.pushNamed(context, '/products' , arguments: Titre);
             },
           child:Container(
               padding: EdgeInsets.only(left: 10.0),
@@ -67,6 +67,7 @@ class HomePage2 extends StatelessWidget {
        );
     }
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -75,27 +76,29 @@ class HomePage2 extends StatelessWidget {
           ),
         ),
         child: Center(
-          child: Column(
+          child: SingleChildScrollView(
+          child : Column(
           children: <Widget>[
             SizedBox(height: 130,),
             Row(
               children : [
               Padding(
               padding: EdgeInsets.all( MediaQuery.of(context).size.height * 0.011),
-            child :_buildBox('assets/tiles.jpg',0.3,0.45,'TILES'),
+            child :_buildBox('assets/tiles.jpg',0.3,0.45,'Tiles'),
             ),
             Padding(
               padding: EdgeInsets.all(10.0),
-              child :_buildBox('assets/fraise.jpg',0.3,0.45,'FRIEZES'),
+              child :_buildBox('assets/fraise.jpg',0.3,0.45,'Fiezes'),
             ),
             ]
             ),
             Padding(
               padding: EdgeInsets.all(10.0),
-              child :_buildBox('assets/decor.jpg',0.25,0.8,'DECORS'),
+              child :_buildBox('assets/decor.jpg',0.25,0.8,'Decors'),
             ),
           ],
         )
+        ),
         ),
       )
     );
