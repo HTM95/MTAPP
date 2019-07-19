@@ -29,6 +29,7 @@ import 'model/product.dart';
 import 'detailUi.dart';
 import 'register_with_firebase.dart';
 import 'login_with_firebase.dart';
+import 'products_firestore.dart';
 // TODO: Build a Shrine Theme (103)
 final ThemeData _kShrineTheme = _buildShrineTheme();
 
@@ -99,7 +100,7 @@ class _ShrineAppState extends State<ShrineApp> {
       routes: <String, WidgetBuilder> {
         '/products': (BuildContext context) => Backdrop(
           currentCategory: Category.all,
-          frontLayer: ProductsPage(),
+          frontLayer: ProductsPageFS(),
           backLayer: MenuPage(
             currentCategory: _currentCategory,
              onCategoryTap: _onCategoryTap,

@@ -13,9 +13,18 @@
 // limitations under the License.
 
 import 'product.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 
 class ProductsRepository {
- static const allProducts = <Product> [
+
+  getData()async{
+    return await Firestore.instance.collection('products').getDocuments();
+  }
+
+
+ static var allProducts =
+  <Product> [
     Product(
       category: Category.accessories,
       id: 0,

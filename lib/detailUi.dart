@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 //import 'PageIndicator.dart';
 import 'model/products_repository.dart';
 import 'model/product.dart';
+import 'package:Shrine/products_firestore.dart';
 
 class ProductDetailUI extends StatefulWidget{
   _ProductDetailState createState()=> new _ProductDetailState();
@@ -32,8 +33,7 @@ class _ProductDetailState extends State<ProductDetailUI> {
 
   @override
   Widget build(BuildContext context) {
-    int productId = ModalRoute.of(context).settings.arguments;
-    Product product = ProductsRepository.findProd(productId);
+    Produit product = ModalRoute.of(context).settings.arguments;
     // TODO: implement build
     return new Scaffold(
       body: Stack(
@@ -47,8 +47,7 @@ class _ProductDetailState extends State<ProductDetailUI> {
                 child: Stack(
                   fit: StackFit.expand,
                   children: <Widget>[
-                    Image.asset( product.assetName,
-                      package: product.assetPackage,
+                    Image.network( product.image,
                       fit: BoxFit.cover,),
                     //Image.asset(productImage[currentIndex])
                     Positioned(
@@ -67,7 +66,7 @@ class _ProductDetailState extends State<ProductDetailUI> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text(product.name ,
+                          Text(product.Nom ,
                           style: TextStyle(
                             fontSize: 32,
                             fontFamily: "Montserrat-Bold",
@@ -80,7 +79,7 @@ class _ProductDetailState extends State<ProductDetailUI> {
                           //TODO : currentindex
                           ),
                           SizedBox(height: 40,),
-                          Text( product.price.toString() , style: TextStyle(
+                          Text( product.Prix , style: TextStyle(
                             //TODO : currentindex
                             fontSize: 35,
                             fontFamily: "Montserrat-Bold",
