@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:toast/toast.dart';
 
 class EmailConfirmation extends StatefulWidget {
 
@@ -142,8 +143,13 @@ class _EmailConfirmationState extends State<EmailConfirmation> {
 
   @override
   Future<void> resetPassword() async {
-    await _firebaseAuth.sendPasswordResetEmail(email: emailController.text);
-
+    try{
+      await _firebaseAuth.sendPasswordResetEmail(email: emailController.text);
+      Toast.show('Consulter votre boîte email', context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+      Navigator.of(context).pushNamed('/login_with_firebase');
+    }catch(e){
+      Toast.show(e.message, context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+    }
   }
 
 }

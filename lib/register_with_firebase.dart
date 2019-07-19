@@ -69,6 +69,7 @@ class _UserRegisterState extends State<UserRegister>{
                 ),
                 Expanded(
                   child: Container(
+                    //height: MediaQuery.of(context).size.height /3,
                     margin: const EdgeInsets.only(left: 30, right: 30),
                       decoration: new BoxDecoration(
                         border: Border.all(
@@ -161,6 +162,7 @@ class _UserRegisterState extends State<UserRegister>{
                           children: <Widget>[ 
                             Expanded(
                               child: Container(
+                                //height: MediaQuery.of(context).size.height/13.1,
                                 decoration: new BoxDecoration(
                                   border: Border.all(
                                   width: 0.5
@@ -174,6 +176,7 @@ class _UserRegisterState extends State<UserRegister>{
                                   children: <Widget>[
                                     Expanded(
                                       child: Container(
+                                        //height: MediaQuery.of(context).size.height/2,
                                         margin: const EdgeInsets.only(left: 12),
                                         child: Row(
                                           children: <Widget>[
@@ -255,32 +258,48 @@ class _UserRegisterState extends State<UserRegister>{
     final formState = _formKey.currentState;
     if(formState.validate()){
       formState.save();
-      try{
-        FirebaseUser user = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailController.text.trim(), password: pwdController.text);
-        print('Inscrit !');
-        FirebaseUser user1 = await FirebaseAuth.instance.currentUser();
-        Firestore.instance.collection('utilisateurs').document(user1.uid)
+      final QuerySnapshot result = await Firestore.instance
+          .collection('utilisateurs')
+          .where('email', isEqualTo: emailController.text.trim())
+          .limit(1)
+          .getDocuments();
+      final List<DocumentSnapshot> documents = result.documents;
+      if (documents.length == 1) {
+        Toast.show('Cet email est déjà utilisé', context, duration: Toast.LENGTH_LONG,
+            gravity: Toast.BOTTOM);
+        print('TRUE');
+      }
+      else{
+        try {
+          FirebaseUser user = await FirebaseAuth.instance
+              .createUserWithEmailAndPassword(
+              email: emailController.text.trim(), password: pwdController.text)
+              .catchError((e) {
+            Toast.show(e.details, context, duration: Toast.LENGTH_LONG,
+                gravity: Toast.BOTTOM); // code, message, details
+          });
+          Toast.show('Inscription réussite', context, duration: Toast.LENGTH_LONG,
+              gravity: Toast.BOTTOM);
+          FirebaseUser user1 = await FirebaseAuth.instance.currentUser();
+          Firestore.instance.collection('utilisateurs').document(user1.uid)
             .setData(
             { 'nom': nameController.text,
               'email': emailController.text,
               'tel': telController.text,
               'categorie': _currentItemSelected
             });
-      }catch(e){
-        //print(e.message);
-        Toast.show(e.message, context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+        } catch (e) {
+          //print(e.message);
+          Toast.show(e.message, context, duration: Toast.LENGTH_LONG,
+              gravity: Toast.BOTTOM);
+        }
+        print('FALSE');
+      }
+      // ignore: unrelated_type_equality_checks
+      /*if(checkUserExist(emailController.text.trim()) == true) {
+        Toast.show('OUI', context, duration: Toast.LENGTH_LONG,
+            gravity: Toast.BOTTOM);*/
       }
     }
     
   }
-
-  /*void addUser(String uid) async{
-    Future<void> _userRef = FirebaseDatabase.instance.reference().child('users').child(uid).set({
-      'name': nameController,
-      'email': emailController,
-      'tel': telController,
-      'password': pwdController
-    });
-  }*/
-
-}
