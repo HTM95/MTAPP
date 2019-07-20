@@ -88,7 +88,7 @@ class HomePage2 extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.all(10.0),
-              child :_buildBox('assets/fraise.jpg',0.3,0.45,'Fiezes'),
+              child :_buildBox('assets/fraise.jpg',0.3,0.45,'Friezes'),
             ),
             ]
             ),

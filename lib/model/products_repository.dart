@@ -23,7 +23,7 @@ class ProductsRepository {
   }
 
 
- static var allProducts =
+/* static var allProducts =
   <Product> [
     Product(
       category: Category.accessories,
@@ -303,5 +303,5 @@ class ProductsRepository {
         return p.category == category;
       }).toList();
     }
-  }
+  }*/
 }

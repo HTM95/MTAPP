@@ -35,9 +35,7 @@ class _ProductsPageStateFS extends State<ProductsPageFS> {
       return GestureDetector(
         onTap: () {
           Navigator.pushNamed(context, '/details',
-              arguments: Produit(
-                  document['NomProd'].toString(), document['Id'].toString(),
-                  document['Prix'].toString(), document['Image'].toString())
+              arguments:document
           );
         },
         child: Card(
@@ -83,7 +81,7 @@ class _ProductsPageStateFS extends State<ProductsPageFS> {
                         ),
                         //TODO : Add popup to select qte
                         onPressed: () {
-                          cmd.displayDialog(context);
+                          cmd.displayDialog(context , document);
                         },
                       ),
                     ],

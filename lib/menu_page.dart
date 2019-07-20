@@ -22,7 +22,7 @@ class MenuPage extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
 
     return GestureDetector(
-      onTap: () => onCategoryTap(category),
+      onTap: () => onCategoryTap(category), //Navigator.pushNamed(context, '/products' , arguments: category.toString()),//
       child: category == currentCategory
           ? Column(
         children: <Widget>[

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 //import 'PageIndicator.dart';
-import 'model/products_repository.dart';
-import 'model/product.dart';
-import 'package:Shrine/products_firestore.dart';
+import 'commande.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProductDetailUI extends StatefulWidget{
   _ProductDetailState createState()=> new _ProductDetailState();
@@ -33,9 +32,11 @@ class _ProductDetailState extends State<ProductDetailUI> {
 
   @override
   Widget build(BuildContext context) {
-    Produit product = ModalRoute.of(context).settings.arguments;
+    Commande_Repository cmd = new Commande_Repository();
+    DocumentSnapshot document = ModalRoute.of(context).settings.arguments;
     // TODO: implement build
     return new Scaffold(
+      resizeToAvoidBottomPadding: false,
       body: Stack(
         children: <Widget>[
           Column(
@@ -47,7 +48,7 @@ class _ProductDetailState extends State<ProductDetailUI> {
                 child: Stack(
                   fit: StackFit.expand,
                   children: <Widget>[
-                    Image.network( product.image,
+                    Image.network( document['Image'].toString(),
                       fit: BoxFit.cover,),
                     //Image.asset(productImage[currentIndex])
                     Positioned(
@@ -66,7 +67,8 @@ class _ProductDetailState extends State<ProductDetailUI> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text(product.Nom ,
+                          Text(
+                            document['NomProd'] ,
                           style: TextStyle(
                             fontSize: 32,
                             fontFamily: "Montserrat-Bold",
@@ -79,7 +81,7 @@ class _ProductDetailState extends State<ProductDetailUI> {
                           //TODO : currentindex
                           ),
                           SizedBox(height: 40,),
-                          Text( product.Prix , style: TextStyle(
+                          Text( document['Prix'].toString(), style: TextStyle(
                             //TODO : currentindex
                             fontSize: 35,
                             fontFamily: "Montserrat-Bold",
@@ -145,7 +147,7 @@ class _ProductDetailState extends State<ProductDetailUI> {
                 height: 60.0,
                 child: Row(
                   children: <Widget>[
-                    Expanded(
+                  /*  Expanded(
                       child: Container(
                         color: Colors.blueAccent,
                         child: Center(
@@ -153,17 +155,17 @@ class _ProductDetailState extends State<ProductDetailUI> {
                         ),
                       ),
 
-                    ),
+                    ),*/
                     Expanded(
 
                     child:GestureDetector(
                     onTap: (){
-                      print('buy');
+                      cmd.displayDialog(context , document);
                     },
                     child : Container(
                     color: Colors.indigo,
                     child: Center(
-                    child: Icon(Icons.shopping_basket,color: Colors.white,),
+                    child: Icon(Icons.shopping_basket,color: Colors.white)
                     ),
                     ),
                     ),
