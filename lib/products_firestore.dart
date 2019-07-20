@@ -14,6 +14,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'commande.dart';
 
 class ProductsPageFS extends StatefulWidget{
   _ProductsPageStateFS createState()=> _ProductsPageStateFS();
@@ -27,7 +28,7 @@ class Produit{
   Produit(this.Nom , this.Id , this.Prix , this.image);
 }
 class _ProductsPageStateFS extends State<ProductsPageFS> {
-
+  Commande_Repository cmd = new Commande_Repository();
 
   Widget _buildListItem2(BuildContext context , DocumentSnapshot document ){
 
@@ -81,7 +82,9 @@ class _ProductsPageStateFS extends State<ProductsPageFS> {
                           semanticLabel: 'search',
                         ),
                         //TODO : Add popup to select qte
-                        onPressed: () {},
+                        onPressed: () {
+                          cmd.displayDialog(context);
+                        },
                       ),
                     ],
                   ),
