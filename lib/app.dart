@@ -112,6 +112,7 @@ class _ShrineAppState extends State<ShrineApp> {
         '/details': (BuildContext context) => ProductDetailUI(),
         '/register': (BuildContext context) => UserRegister(),
         '/emailConfirm' : (BuildContext context) => EmailConfirmation(),
+        '/home2' : (BuildContext context) => HomePage2(),
       },
       // TODO: Make currentCategory field take _currentCategory (104)
       // TODO: Pass _currentCategory for frontLayer (104)

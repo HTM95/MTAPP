@@ -271,43 +271,58 @@ class _UserRegisterState extends State<UserRegister>{
     final formState = _formKey.currentState;
     if(formState.validate()){
       formState.save();
-      final QuerySnapshot result = await Firestore.instance
+      /*final QuerySnapshot result = await Firestore.instance
           .collection('utilisateurs')
           .where('email', isEqualTo: emailController.text.trim())
           .limit(1)
           .getDocuments();
       final List<DocumentSnapshot> documents = result.documents;
-      if (documents.length == 1) {
+      if (documents.length == 1 && emailController.text.trim()==null) {
         Toast.show('Cet email est déjà utilisé', context, duration: Toast.LENGTH_LONG,
             gravity: Toast.BOTTOM);
         print('TRUE');
-      }
-      else{
+      }*/
+      //else{
         try {
           FirebaseUser user = await FirebaseAuth.instance
               .createUserWithEmailAndPassword(
-              email: emailController.text.trim(), password: pwdController.text)
-              .catchError((e) {
-            Toast.show(e.details, context, duration: Toast.LENGTH_LONG,
-                gravity: Toast.BOTTOM); // code, message, details
-          });
+              email: emailController.text.trim(), password: pwdController.text);
           Toast.show('Inscription réussite', context, duration: Toast.LENGTH_LONG,
               gravity: Toast.BOTTOM);
           FirebaseUser user1 = await FirebaseAuth.instance.currentUser();
           Firestore.instance.collection('utilisateurs').document(user1.uid)
               .setData(
               { 'nom': nameController.text,
-                'email': emailController.text,
+                'email': emailController.text.trim(),
                 'tel': telController.text,
                 'categorie': _currentItemSelected
               });
+          Navigator.of(context).pushNamed('/home2');
         } catch (e) {
-          //print(e.message);
-          Toast.show(e.message, context, duration: Toast.LENGTH_LONG,
-              gravity: Toast.BOTTOM);
+          switch(e.message){
+            case 'Given String is empty or null':
+              Toast.show('Veuillez remplir les champs', context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+              break;
+            case 'A network error (such as timeout, interrupted connection or unreachable host) has occurred.':
+              Toast.show('Erreur de connexion', context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+              break;
+            case 'The email address is badly formatted.':
+              Toast.show('Veuillez écrire correctement votre email', context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+              break;
+            case 'The email address is already in use by another account.':
+              Toast.show('Cet email est utilisé par un autre compte', context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+              break;
+            case 'The given password is invalid. [ Password should be at least 6 characters ]':
+              Toast.show('Le mot de passe doit contenir au moins 6 caractères', context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+              break;
+            default:
+              Toast.show(e.message, context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+          }
+          print(e.message);
+          //Toast.show(e.message, context, duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
         }
-        print('FALSE');
-      }
+        //print('FALSE');
+      //}
       // ignore: unrelated_type_equality_checks
       /*if(checkUserExist(emailController.text.trim()) == true) {
         Toast.show('OUI', context, duration: Toast.LENGTH_LONG,

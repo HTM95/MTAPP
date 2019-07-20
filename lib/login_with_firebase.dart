@@ -43,7 +43,7 @@ class _UserLoginState extends State<UserLogin> {
             child: Column(
               children: <Widget>[
                 SizedBox(
-                  height: 80,
+                  height: 130,
                 ),
                 Center(
                   child: SizedBox(
@@ -196,8 +196,24 @@ class _UserLoginState extends State<UserLogin> {
         Toast.show('Connecté', context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
         Navigator.pop(context);
       }catch(e){
-        //print(e.message);
-        Toast.show(e.message, context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+        switch(e.message){
+          case 'Given String is empty or null':
+            Toast.show('Veuillez remplir les champs', context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+            break;
+          case 'A network error (such as timeout, interrupted connection or unreachable host) has occurred.':
+            Toast.show('Erreur de connexion', context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+            break;
+          case 'There is no user record corresponding to this identifier. The user may have been deleted.':
+            Toast.show('Email incorrect', context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+            break;
+          case 'The password is invalid or the user does not have a password.':
+            Toast.show('Mot de passe invalide', context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+            break;
+          default:
+            Toast.show(e.message, context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+        }
+        print(e.message);
+        //Toast.show(e.message, context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
       }
     }
   }
