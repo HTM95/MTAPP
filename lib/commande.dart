@@ -20,9 +20,23 @@ class Commande_Repository {
                 color: Colors.blueAccent,
                 child: new Text('Commander' , style: TextStyle(color: Colors.white),),
           onPressed:(){
+            DocumentReference refProd = Firestore.instance.collection('products').document('guEgu2sjsyOsSEChu2fT');
+            DocumentReference refClient = Firestore.instance.collection('products').document('guEgu2sjsyOsSEChu2fT');
+                  Map<String,dynamic> data = {
+                    'dateCommande': Timestamp.fromDate(DateTime.now()),
+                    'produit': refProd ,
+                    'qte':_textFieldController.text.toString() ,
+                    'client' : refClient
+                  };
                   Firestore.instance.collection('commande').document()
-                         .setData({ 'dateCommande': Timestamp.fromDate(DateTime.now()), 'produit': 'tiles1' ,'qte':_textFieldController.text.toString() , 'utilisateur' : 'mehdi'});
-                  _textFieldController.clear();
+                         .setData(data).whenComplete((){
+                           Navigator.of(context).pop();
+                           _textFieldController.clear();
+                           new SnackBar(
+                               content: Text('Commande Reusie'));
+
+                         });
+
           },
               ),
               new FlatButton(
