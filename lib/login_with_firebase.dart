@@ -144,7 +144,15 @@ class _UserLoginState extends State<UserLogin> {
                       backgroundColor: Colors.lightBlue,
                       child: Icon(Icons.arrow_right),
                       mini: true,
-                      onPressed: signIn,
+                      onPressed: () async {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return Center(child: CircularProgressIndicator(),);
+                            });
+                        await signIn();
+                        //Navigator.pop(context);
+                      },
                     ),
                 ),
                   ],
@@ -194,7 +202,7 @@ class _UserLoginState extends State<UserLogin> {
       try{
         FirebaseUser user = await FirebaseAuth.instance.signInWithEmailAndPassword(email: emailController.text, password: pwdController.text);
         Toast.show('Connecté', context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
-        Navigator.pop(context);
+        Navigator.of(context).pushNamed('/home2');
       }catch(e){
         switch(e.message){
           case 'Given String is empty or null':

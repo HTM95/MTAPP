@@ -247,7 +247,15 @@ class _UserRegisterState extends State<UserRegister>{
                       minWidth: 150,
                       shape: StadiumBorder(),
                       child: MaterialButton(
-                        onPressed: signUp,
+                        onPressed: () async {
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return Center(child: CircularProgressIndicator(),);
+                              });
+                          await signUp();
+                          //Navigator.pop(context);
+                        },
                         textColor: Colors.lightBlue,
                         color: Colors.white,
                         height: 50,
