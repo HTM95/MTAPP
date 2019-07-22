@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:toast/toast.dart';
+
 class Commande_Repository {
 
   TextEditingController _textFieldController = new TextEditingController();
 
-  displayDialog(BuildContext context , DocumentSnapshot document ) async {
+  displayDialog(BuildContext context, DocumentSnapshot document) async {
     return showDialog(
         context: context,
         builder: (context) {
@@ -20,21 +21,21 @@ class Commande_Repository {
             actions: <Widget>[
               new RaisedButton(
                 color: Colors.blueAccent,
-                child: new Text('Commander' , style: TextStyle(color: Colors.white),),
-          onPressed:() async {
-                  if(int.parse(_textFieldController.text.toString()) <= document['qte']) {
+                child: new Text(
+                  'Commander', style: TextStyle(color: Colors.white),),
+                onPressed: () async {
+                  if (int.parse(_textFieldController.text.toString()) <=
+                      document['qte']) {
                     FirebaseUser user = await FirebaseAuth.instance
                         .currentUser();
-                    DocumentReference refProd = Firestore.instance.collection(
-                        'products').document(document.documentID);
-                    DocumentReference refClient = Firestore.instance.collection(
-                        'products').document(user.uid);
+                    //DocumentReference refProd = Firestore.instance.collection('products').document(document.documentID);
+                    //DocumentReference refClient = Firestore.instance.collection('client').document(user.uid);
 
                     Map<String, dynamic> data = {
                       'dateCommande': Timestamp.fromDate(DateTime.now()),
-                      'produit': refProd,
+                      'produitID': document.documentID.toString(),
                       'qte': _textFieldController.text.toString(),
-                      'client': refClient,
+                      'clientID': user.uid.toString(),
                       'valider': false,
                     };
                     //TODO : Ajouter la reffenrence du client et du produit
@@ -43,12 +44,14 @@ class Commande_Repository {
                         .setData(data).whenComplete(() {
                       Navigator.of(context).pop();
                       _textFieldController.clear();
-                      Toast.show('Commande réusite', context , duration: Toast.LENGTH_LONG);
+                      Toast.show('Commande réusite', context,
+                          duration: Toast.LENGTH_LONG);
                     });
-                  }else {
-                    Toast.show('quantité non valable', context, duration: Toast.LENGTH_LONG );
+                  } else {
+                    Toast.show('quantité non valable', context,
+                        duration: Toast.LENGTH_LONG);
                   }
-          },
+                },
               ),
               new FlatButton(
 

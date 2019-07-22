@@ -1,41 +1,20 @@
-// Copyright 2018-present the Flutter authors. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-// http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
 
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'commande.dart';
+import 'home2.dart';
 
 class ProductsPageFS extends StatefulWidget{
   _ProductsPageStateFS createState()=> _ProductsPageStateFS();
 }
-class Produit{
-  final String Nom;
-  final String Id;
-  final String Prix;
-  final String image;
-
-  Produit(this.Nom , this.Id , this.Prix , this.image);
-}
-class _ProductsPageStateFS extends State<ProductsPageFS> {
+class _ProductsPageStateFS extends State<ProductsPageFS>{
   Commande_Repository cmd = new Commande_Repository();
 
-  Widget _buildListItem2(BuildContext context , DocumentSnapshot document ){
-
+ Widget _buildListItem2(BuildContext context , DocumentSnapshot document ,String profil ){
       return GestureDetector(
         onTap: () {
           Navigator.pushNamed(context, '/details',
-              arguments:document
+              arguments:dataDetails(document,profil)
           );
         },
         child: Card(
@@ -46,7 +25,7 @@ class _ProductsPageStateFS extends State<ProductsPageFS> {
               AspectRatio(
                 aspectRatio: 18 / 9,
                 child: Image.network(
-                  document['Image'].toString(),
+                  document['imageUrl1'].toString(),
                   fit: BoxFit.fitWidth,
                 ),
               ),
@@ -57,7 +36,7 @@ class _ProductsPageStateFS extends State<ProductsPageFS> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        document['NomProd'],
+                        document['name'],
                         //style: theme.textTheme.button,
                         softWrap: false,
                         overflow: TextOverflow.ellipsis,
@@ -65,7 +44,7 @@ class _ProductsPageStateFS extends State<ProductsPageFS> {
                       ),
                       SizedBox(height: 1.0),
                       Text(
-                          document['Prix'].toString()
+                          document['prix' + profil].toString() + ' DH'
                       ),
                       IconButton(
                         // padding: EdgeInsets.fromLTRB(130.0, 0.0, 0.0, 0.0),
@@ -97,12 +76,14 @@ class _ProductsPageStateFS extends State<ProductsPageFS> {
   // TODO: Add a variable for Category (104)
   @override
   Widget build(BuildContext context) {
-    String categ = ModalRoute.of(context).settings.arguments;
+    sdata D = ModalRoute.of(context).settings.arguments;
+    String categ = D.title;
+    String profil = D.user;
     // TODO: Return an AsymmetricView (104)
     // return  AsymmetricView(products: ProductsRepository.loadProducts(Category.all));
     return
           StreamBuilder(
-          stream: Firestore.instance.collection('products').where('Categorie' , isEqualTo: categ).snapshots(),
+          stream: Firestore.instance.collection('produits').where('category' , isEqualTo: categ).snapshots(),
           builder: (context , snapshot){
             if(!snapshot.hasData) return const Text('Loading ...');
             return GridView.builder(
@@ -110,9 +91,16 @@ class _ProductsPageStateFS extends State<ProductsPageFS> {
               gridDelegate:
               new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
                 itemBuilder: (context,index)=>
-                    _buildListItem2(context , snapshot.data.documents[index]),
+                    _buildListItem2(context , snapshot.data.documents[index], profil),
             );
-          },
+            },
           );
   }
+}
+
+class dataDetails{
+  DocumentSnapshot documentSnapshot;
+  String profil;
+
+  dataDetails(this.documentSnapshot,this.profil);
 }

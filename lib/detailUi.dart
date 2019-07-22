@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 //import 'PageIndicator.dart';
 import 'commande.dart';
+import 'products_firestore.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProductDetailUI extends StatefulWidget{
@@ -33,7 +34,8 @@ class _ProductDetailState extends State<ProductDetailUI> {
   @override
   Widget build(BuildContext context) {
     Commande_Repository cmd = new Commande_Repository();
-    DocumentSnapshot document = ModalRoute.of(context).settings.arguments;
+    dataDetails  D = ModalRoute.of(context).settings.arguments;
+    DocumentSnapshot document = D.documentSnapshot;
     // TODO: implement build
     return new Scaffold(
       resizeToAvoidBottomPadding: false,
@@ -48,7 +50,7 @@ class _ProductDetailState extends State<ProductDetailUI> {
                 child: Stack(
                   fit: StackFit.expand,
                   children: <Widget>[
-                    Image.network( document['Image'].toString(),
+                    Image.network( document['imageUrl1'].toString(),
                       fit: BoxFit.cover,),
                     //Image.asset(productImage[currentIndex])
                     Positioned(
@@ -68,7 +70,7 @@ class _ProductDetailState extends State<ProductDetailUI> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            document['NomProd'] ,
+                            document['name'] ,
                           style: TextStyle(
                             fontSize: 32,
                             fontFamily: "Montserrat-Bold",
@@ -81,7 +83,7 @@ class _ProductDetailState extends State<ProductDetailUI> {
                           //TODO : currentindex
                           ),
                           SizedBox(height: 40,),
-                          Text( document['Prix'].toString(), style: TextStyle(
+                          Text( document['prix' + D.profil].toString() + ' DH', style: TextStyle(
                             //TODO : currentindex
                             fontSize: 35,
                             fontFamily: "Montserrat-Bold",
@@ -120,7 +122,7 @@ class _ProductDetailState extends State<ProductDetailUI> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text('More Details',
+                    Text(document['desc'],
                     style: TextStyle(
                       fontSize: 30.0 ,
                       fontFamily: "Montserrat-Bold",

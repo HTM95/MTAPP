@@ -12,11 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'supplemental/asymmetric_view.dart';
-import 'model/products_repository.dart';
-import 'model/product.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class HomePage2 extends StatelessWidget {
 
 
@@ -30,8 +29,19 @@ class HomePage2 extends StatelessWidget {
           clipBehavior: Clip.hardEdge,
           borderRadius: new BorderRadius.circular(35.0),
           child :GestureDetector(
-            onTap: (){
-              Navigator.pushNamed(context, '/products' , arguments: Titre);
+            onTap: () async{
+              String profil;
+              FirebaseUser user1 = await FirebaseAuth.instance.currentUser();
+              Firestore.instance
+                  .collection('utilisateurs')
+                  .document(user1.uid)
+                  .get()
+                  .then((DocumentSnapshot ds) {
+                profil = ds['categorie'].toString();
+                Navigator.pushNamed(context, '/products' , arguments: sdata(Titre,profil));
+              });
+
+
             },
           child:Container(
               padding: EdgeInsets.only(left: 10.0),
@@ -103,4 +113,10 @@ class HomePage2 extends StatelessWidget {
       )
     );
   }
+}
+class sdata {
+  String title;
+  String user;
+
+  sdata(this.title,this.user);
 }
