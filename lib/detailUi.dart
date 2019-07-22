@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'PageIndicator.dart';
+import 'PageIndicator.dart';
 import 'commande.dart';
 import 'products_firestore.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -8,9 +8,28 @@ class ProductDetailUI extends StatefulWidget{
   _ProductDetailState createState()=> new _ProductDetailState();
 }
 
-class _ProductDetailState extends State<ProductDetailUI> {
+class _ProductDetailState extends State<ProductDetailUI> with TickerProviderStateMixin{
 
-  int currentIndex = 0;
+  int currentIndex = 1;
+  AnimationController _controller;
+  Animation<double> _titleAnim;
+  Animation<double> _tagAnim;
+  Animation<double> _priceAnim;
+
+  @override
+
+  void initState(){
+    _controller = AnimationController(duration: Duration(milliseconds: 1700),vsync:this );
+    _titleAnim = Tween(begin: 0.0,end: 1.0).animate(CurvedAnimation(parent: _controller, curve: Interval(0,0.3)));
+    _tagAnim = Tween(begin: 0.0,end: 1.0).animate(CurvedAnimation(parent: _controller, curve: Interval(0.3,0.5)));
+    _priceAnim = Tween(begin: 0.0,end: 1.0).animate(CurvedAnimation(parent: _controller, curve: Interval(0.5,0.8)));
+    _controller.addListener((){
+      setState(() {});
+    });
+    _controller.forward();
+    super.initState();
+  }
+
   void _nextImage(){
     setState(() {
       if(currentIndex < 3){
@@ -23,10 +42,10 @@ class _ProductDetailState extends State<ProductDetailUI> {
 
   void _prevImage(){
     setState(() {
-      if(currentIndex > 0){
+      if(currentIndex > 1){
         currentIndex --;
       }else{
-        currentIndex = 0;
+        currentIndex = 1;
       }
     });
   }
@@ -50,7 +69,7 @@ class _ProductDetailState extends State<ProductDetailUI> {
                 child: Stack(
                   fit: StackFit.expand,
                   children: <Widget>[
-                    Image.network( document['imageUrl1'].toString(),
+                    Image.network( document['imageUrl'+currentIndex.toString()].toString(),
                       fit: BoxFit.cover,),
                     //Image.asset(productImage[currentIndex])
                     Positioned(
@@ -69,32 +88,48 @@ class _ProductDetailState extends State<ProductDetailUI> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text(
-                            document['name'] ,
-                          style: TextStyle(
-                            fontSize: 32,
-                            fontFamily: "Montserrat-Bold",
-                            color: Colors.white
-                          ),
+                          Transform.translate(
+                            offset: Offset(0.0, 40*(1-_titleAnim.value)),
+                            child: Opacity(
+                              opacity: _titleAnim.value,
+                              child: Text(
+                                document['name'] ,
+                              style: TextStyle(
+                                fontSize: 32,
+                                fontFamily: "Montserrat-Bold",
+                                color: Colors.white
+                              ),
+                              ),
+                            ),
                           ),
                           SizedBox(
                             height:4.0 ,),
-                          Text('Details' , style: TextStyle(fontSize: 20,color: Colors.white),
-                          //TODO : currentindex
+                          Transform.translate(
+                            offset: Offset(0.0, 20*(1-_tagAnim.value)),
+                            child:Opacity(
+                              opacity: _tagAnim.value,
+                              child: Text('Details' , style: TextStyle(fontSize: 20,color: Colors.white),
+                              //TODO : currentindex
+                              ),
+                            ),
                           ),
                           SizedBox(height: 40,),
-                          Text( document['prix' + D.profil].toString() + ' DH', style: TextStyle(
-                            //TODO : currentindex
-                            fontSize: 35,
-                            fontFamily: "Montserrat-Bold",
-                            color: Colors.white
-                          ),
+                          Opacity(
+                            opacity: _priceAnim.value,
+                            child: Text( document['prix' + D.profil].toString() + ' DH', style: TextStyle(
+                              //TODO : currentindex
+                              fontSize: 35,
+                              fontFamily: "Montserrat-Bold",
+                              color: Colors.white
+                            ),
+                            ),
                           ),
                           SizedBox(
                             height: 40.0,
                           ),
                           SizedBox(
                             width: 70.0,
+                            child: PageIndicator(currentIndex,3),
                             //child: PageIn,
                           )
                         ],
