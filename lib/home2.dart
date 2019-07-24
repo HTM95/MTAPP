@@ -15,6 +15,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'model/product.dart';
 
 class HomePage2 extends StatelessWidget {
 
@@ -38,7 +39,8 @@ class HomePage2 extends StatelessWidget {
                   .get()
                   .then((DocumentSnapshot ds) {
                 profil = ds['categorie'].toString();
-                Navigator.pushNamed(context, '/products' , arguments: sdata(Titre,profil));
+                Category g = Category.values.firstWhere((e) => e.toString() == 'Category.' + Titre);
+                Navigator.pushNamed(context, '/products' , arguments: sdata(g,profil));
               });
 
 
@@ -94,17 +96,17 @@ class HomePage2 extends StatelessWidget {
               children : [
               Padding(
               padding: EdgeInsets.all( MediaQuery.of(context).size.height * 0.011),
-            child :_buildBox('assets/tiles.jpg',0.3,0.45,'Tiles'),
+            child :_buildBox('assets/tiles.jpg',0.3,0.45,Category.Tiles.toString().split('.').last),
             ),
             Padding(
               padding: EdgeInsets.all(10.0),
-              child :_buildBox('assets/fraise.jpg',0.3,0.45,'Friezes'),
+              child :_buildBox('assets/fraise.jpg',0.3,0.45,Category.Friezes.toString().split('.').last),
             ),
             ]
             ),
             Padding(
               padding: EdgeInsets.all(10.0),
-              child :_buildBox('assets/decor.jpg',0.25,0.8,'Decors'),
+              child :_buildBox('assets/decor.jpg',0.25,0.8,Category.Decors.toString().split('.').last),
             ),
           ],
         )
@@ -115,7 +117,8 @@ class HomePage2 extends StatelessWidget {
   }
 }
 class sdata {
-  String title;
+
+  Category title;
   String user;
 
   sdata(this.title,this.user);

@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'model/product.dart';
+import 'home2.dart';
 
 const double _kFlingVelocity = 2.0;
 class Backdrop extends StatefulWidget{
-  final Category currentCategory;
+  final Category currentCategory ;
   final Widget frontLayer;
   final Widget backLayer;
   final Widget frontTitle;
   final Widget backTitle;
 
   const Backdrop({
-    @required this.currentCategory,
+   @required this.currentCategory,
     @required this.frontLayer,
     @required this.backLayer,
     @required this.frontTitle,
@@ -38,6 +39,7 @@ class _FrontLayer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Material(
       elevation: 16.0,
       shape: BeveledRectangleBorder(
@@ -139,6 +141,9 @@ class _BackdropState extends State<Backdrop>
 
   @override
   Widget build(BuildContext context) {
+    sdata D = ModalRoute.of(context).settings.arguments;
+    Category categ = D.title;
+    String profil = D.user;
     // TODO: implement build
     var appBar = AppBar(
       brightness: Brightness.light,

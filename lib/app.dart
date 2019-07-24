@@ -86,7 +86,6 @@ class ShrineApp extends StatefulWidget {
 
 class _ShrineAppState extends State<ShrineApp> {
   Category _currentCategory = Category.Tiles;
-
   void _onCategoryTap(Category category) {
     setState(() {
       _currentCategory = category;
@@ -100,7 +99,7 @@ class _ShrineAppState extends State<ShrineApp> {
       home: HomePage2(),
       routes: <String, WidgetBuilder> {
         '/products': (BuildContext context) => Backdrop(
-          currentCategory: Category.Tiles,
+          currentCategory: _currentCategory,
           frontLayer: ProductsPageFS(),
           backLayer: MenuPage(
             currentCategory: _currentCategory,

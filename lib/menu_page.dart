@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
-
+import 'home2.dart';
 import 'colors.dart';
 import 'model/product.dart';
 
@@ -20,10 +20,15 @@ class MenuPage extends StatelessWidget {
     final categoryString =
     category.toString().replaceAll('Category.', '').toUpperCase();
     final ThemeData theme = Theme.of(context);
-
+    sdata D = ModalRoute.of(context).settings.arguments;
+    Category categ = D.title;
+    String profil = D.user;
     return GestureDetector(
-      onTap: () => onCategoryTap(category), //Navigator.pushNamed(context, '/products' , arguments: category.toString()),//
-      child: category == currentCategory
+      onTap: () => {
+        D.title = category,
+        Navigator.pushNamed(context, '/products' , arguments: D)
+      },
+      child: /*category == currentCategory
           ? Column(
         children: <Widget>[
           SizedBox(height: 16.0),
@@ -39,13 +44,13 @@ class MenuPage extends StatelessWidget {
             color: kShrinePink400,
           ),
         ],
-      )
-          : Padding(
+      )*/
+        Padding(
         padding: EdgeInsets.symmetric(vertical: 16.0),
         child: Text(
           categoryString,
           style: theme.textTheme.body2.copyWith(
-              color: kShrineBrown900.withAlpha(153)
+              color: kShrineBrown900
           ),
           textAlign: TextAlign.center,
         ),
