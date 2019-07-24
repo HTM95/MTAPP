@@ -148,7 +148,21 @@ class _EmailConfirmationState extends State<EmailConfirmation> {
       Toast.show('Consulter votre boîte email', context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
       Navigator.of(context).pushNamed('/login_with_firebase');
     }catch(e){
-      Toast.show(e.message, context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+      switch(e.message){
+        case 'Given String is empty or null':
+          Toast.show('Veuillez remplir le champ', context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+          break;
+        case 'A network error (such as timeout, interrupted connection or unreachable host) has occurred.':
+          Toast.show('Erreur de connexion', context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+          break;
+        case 'There is no user record corresponding to this identifier. The user may have been deleted.':
+          Toast.show('Email incorrect', context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+          break;
+        default:
+          Toast.show(e.message, context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+      }
+      //print(e.message);
+      //Toast.show(e.message, context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
     }
   }
 

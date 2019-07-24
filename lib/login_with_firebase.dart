@@ -220,7 +220,7 @@ class _UserLoginState extends State<UserLogin> {
           default:
             Toast.show(e.message, context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
         }
-        print(e.message);
+        //print(e.message);
         //Toast.show(e.message, context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
       }
     }

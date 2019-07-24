@@ -326,7 +326,7 @@ class _UserRegisterState extends State<UserRegister>{
             default:
               Toast.show(e.message, context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
           }
-          print(e.message);
+          //print(e.message);
           //Toast.show(e.message, context, duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
         }
         //print('FALSE');
