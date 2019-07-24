@@ -133,7 +133,7 @@ class _UserRegisterState extends State<UserRegister>{
                           controller: telController,
                           decoration: InputDecoration(
                             //labelText: "Email",
-                              hintText: "Tél",
+                              hintText: "Tél : 0612345678",
                               labelStyle: TextStyle(
                                 color: Colors.black,
                                 fontSize: 16,
