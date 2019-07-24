@@ -26,7 +26,7 @@ class MenuPage extends StatelessWidget {
     return GestureDetector(
       onTap: () => {
         if (category == Category.Contactus){
-      Navigator.pushNamed(context, '/products' ) // contact us
+      Navigator.pushNamed(context, '/contactus' ) // contact us
       }else
           {
             D.title = category,

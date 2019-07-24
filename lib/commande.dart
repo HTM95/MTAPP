@@ -33,9 +33,9 @@ class Commande_Repository {
 
                     Map<String, dynamic> data = {
                       'dateCommande': Timestamp.fromDate(DateTime.now()),
-                      'produitID': document.documentID.toString(),
+                      'produit': document.documentID.toString(),
                       'qte': _textFieldController.text.toString(),
-                      'clientID': user.uid.toString(),
+                      'client': user.uid.toString(),
                       'valider': false,
                     };
                     //TODO : Ajouter la reffenrence du client et du produit
