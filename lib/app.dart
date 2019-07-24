@@ -14,19 +14,14 @@
 
 import 'package:flutter/material.dart';
 
-//import 'home.dart';
 import 'contactus.dart';
 import 'emailConfirm.dart';
 import 'home2.dart';
-import 'products.dart';
-//import 'detail.dart';
-//import 'login.dart';
 import 'colors.dart';
 import 'backdrop.dart';
 import 'menu_page.dart';
 import 'model/product.dart';
-//import 'first_screen.dart';
-//import 'register.dart';
+
 import 'detailUi.dart';
 import 'register_with_firebase.dart';
 import 'login_with_firebase.dart';
