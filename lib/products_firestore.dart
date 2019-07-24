@@ -77,7 +77,7 @@ class _ProductsPageStateFS extends State<ProductsPageFS>{
   @override
   Widget build(BuildContext context) {
     sdata D = ModalRoute.of(context).settings.arguments;
-    String categ = D.title;
+    String categ = D.title.toString().split('.').last;
     String profil = D.user;
     // TODO: Return an AsymmetricView (104)
     // return  AsymmetricView(products: ProductsRepository.loadProducts(Category.all));
