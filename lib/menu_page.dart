@@ -25,8 +25,13 @@ class MenuPage extends StatelessWidget {
     String profil = D.user;
     return GestureDetector(
       onTap: () => {
-        D.title = category,
-        Navigator.pushNamed(context, '/products' , arguments: D)
+        if (category == Category.Contactus){
+      Navigator.pushNamed(context, '/products' ) // contact us
+      }else
+          {
+            D.title = category,
+            Navigator.pushNamed(context, '/products', arguments: D)
+          }
       },
       child: /*category == currentCategory
           ? Column(
