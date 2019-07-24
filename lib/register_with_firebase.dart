@@ -302,7 +302,7 @@ class _UserRegisterState extends State<UserRegister>{
               .setData(
               { 'nom': nameController.text,
                 'email': emailController.text.trim(),
-                'tel': telController.text,
+                'tel': "+212"+telController.text.substring(1),
                 'categorie': _currentItemSelected
               });
           Navigator.of(context).pushNamed('/home2');
