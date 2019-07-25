@@ -1,0 +1,145 @@
+Flutter crash report; please file at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter pub get
+
+## exception
+
+YamlException: Error on line 44, column 5: Could not find expected ':' for simple key.
+   ╷
+44 │     -assets/icon/MTicon.png
+   │     ^
+   ╵
+
+```
+#0      Scanner._removeSimpleKey (package:yaml/src/scanner.dart:526:7)
+#1      Scanner._fetchStreamEnd (package:yaml/src/scanner.dart:598:5)
+#2      Scanner._fetchNextToken (package:yaml/src/scanner.dart:356:7)
+#3      Scanner._fetchMoreTokens (package:yaml/src/scanner.dart:339:7)
+#4      Scanner.peek (package:yaml/src/scanner.dart:317:27)
+#5      Parser._parseBlockSequenceEntry (package:yaml/src/parser.dart:348:26)
+#6      Parser._stateMachine (package:yaml/src/parser.dart:77:16)
+#7      Parser.parse (package:yaml/src/parser.dart:47:19)
+#8      Loader._loadSequence (package:yaml/src/loader.dart:141:23)
+#9      Loader._loadNode (package:yaml/src/loader.dart:84:16)
+#10     Loader._loadMapping (package:yaml/src/loader.dart:163:19)
+#11     Loader._loadNode (package:yaml/src/loader.dart:86:16)
+#12     Loader._loadMapping (package:yaml/src/loader.dart:163:19)
+#13     Loader._loadNode (package:yaml/src/loader.dart:86:16)
+#14     Loader._loadDocument (package:yaml/src/loader.dart:62:20)
+#15     Loader.load (package:yaml/src/loader.dart:54:20)
+#16     loadYamlDocument (package:yaml/yaml.dart:51:25)
+#17     loadYamlNode (package:yaml/yaml.dart:42:5)
+#18     loadYaml (package:yaml/yaml.dart:34:5)
+#19     FlutterManifest.createFromString (package:flutter_tools/src/flutter_manifest.dart:38:28)
+#20     FlutterManifest.createFromPath (package:flutter_tools/src/flutter_manifest.dart:32:12)
+#21     FlutterProject._readManifest (package:flutter_tools/src/project.dart:167:54)
+#22     FlutterProject.fromDirectory (package:flutter_tools/src/project.dart:45:38)
+#23     FlutterProject.fromPath (package:flutter_tools/src/project.dart:60:50)
+#24     PackagesGetCommand.usageValues (package:flutter_tools/src/commands/packages.dart:80:55)
+<asynchronous suspension>
+#25     FlutterCommand._sendUsage (package:flutter_tools/src/runner/flutter_command.dart:411:58)
+<asynchronous suspension>
+#26     FlutterCommand.run.<anonymous closure> (package:flutter_tools/src/runner/flutter_command.dart:392:17)
+<asynchronous suspension>
+#27     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:153:29)
+<asynchronous suspension>
+#28     _rootRun (dart:async/zone.dart:1124:13)
+#29     _CustomZone.run (dart:async/zone.dart:1021:19)
+#30     _runZoned (dart:async/zone.dart:1516:10)
+#31     runZoned (dart:async/zone.dart:1463:12)
+#32     AppContext.run (package:flutter_tools/src/base/context.dart:152:18)
+<asynchronous suspension>
+#33     FlutterCommand.run (package:flutter_tools/src/runner/flutter_command.dart:375:20)
+#34     CommandRunner.runCommand (package:args/command_runner.dart:197:27)
+<asynchronous suspension>
+#35     FlutterCommandRunner.runCommand.<anonymous closure> (package:flutter_tools/src/runner/flutter_command_runner.dart:396:21)
+<asynchronous suspension>
+#36     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:153:29)
+<asynchronous suspension>
+#37     _rootRun (dart:async/zone.dart:1124:13)
+#38     _CustomZone.run (dart:async/zone.dart:1021:19)
+#39     _runZoned (dart:async/zone.dart:1516:10)
+#40     runZoned (dart:async/zone.dart:1463:12)
+#41     AppContext.run (package:flutter_tools/src/base/context.dart:152:18)
+<asynchronous suspension>
+#42     FlutterCommandRunner.runCommand (package:flutter_tools/src/runner/flutter_command_runner.dart:356:19)
+<asynchronous suspension>
+#43     CommandRunner.run.<anonymous closure> (package:args/command_runner.dart:112:25)
+#44     new Future.sync (dart:async/future.dart:224:31)
+#45     CommandRunner.run (package:args/command_runner.dart:112:14)
+#46     FlutterCommandRunner.run (package:flutter_tools/src/runner/flutter_command_runner.dart:242:18)
+#47     run.<anonymous closure>.<anonymous closure> (package:flutter_tools/runner.dart:62:22)
+<asynchronous suspension>
+#48     _rootRun (dart:async/zone.dart:1124:13)
+#49     _CustomZone.run (dart:async/zone.dart:1021:19)
+#50     _runZoned (dart:async/zone.dart:1516:10)
+#51     runZoned (dart:async/zone.dart:1500:12)
+#52     run.<anonymous closure> (package:flutter_tools/runner.dart:60:18)
+<asynchronous suspension>
+#53     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:153:29)
+<asynchronous suspension>
+#54     _rootRun (dart:async/zone.dart:1124:13)
+#55     _CustomZone.run (dart:async/zone.dart:1021:19)
+#56     _runZoned (dart:async/zone.dart:1516:10)
+#57     runZoned (dart:async/zone.dart:1463:12)
+#58     AppContext.run (package:flutter_tools/src/base/context.dart:152:18)
+<asynchronous suspension>
+#59     runInContext (package:flutter_tools/src/context_runner.dart:56:24)
+<asynchronous suspension>
+#60     run (package:flutter_tools/runner.dart:51:10)
+#61     main (package:flutter_tools/executable.dart:62:9)
+<asynchronous suspension>
+#62     main (file:///C:/src/flutter/packages/flutter_tools/bin/flutter_tools.dart:8:3)
+#63     _startIsolate.<anonymous closure> (dart:isolate-patch/isolate_patch.dart:299:32)
+#64     _RawReceivePortImpl._handleMessage (dart:isolate-patch/isolate_patch.dart:172:12)
+```
+
+## flutter doctor
+
+```
+[32m[✓][39m Flutter (Channel stable, v1.7.8+hotfix.3, on Microsoft Windows [version 10.0.17763.615], locale fr-FR)
+    [32m•[39m Flutter version 1.7.8+hotfix.3 at C:\src\flutter
+    [32m•[39m Framework revision b712a172f9 (2 weeks ago), 2019-07-09 13:14:38 -0700
+    [32m•[39m Engine revision 54ad777fd2
+    [32m•[39m Dart version 2.4.0
+
+[32m[✓][39m Android toolchain - develop for Android devices (Android SDK version 28.0.3)
+    [32m•[39m Android SDK at C:\Users\DELL\AppData\Local\Android\Sdk
+    [32m•[39m Android NDK location not configured (optional; useful for native profiling support)
+    [32m•[39m Platform android-28, build-tools 28.0.3
+    [32m•[39m ANDROID_SDK_ROOT = C:\Users\DELL\AppData\Local\Android\Sdk
+    [32m•[39m Java binary at: C:\Program Files\Android\Android Studio\jre\bin\java
+    [32m•[39m Java version OpenJDK Runtime Environment (build 1.8.0_152-release-1343-b01)
+    [32m•[39m All Android licenses accepted.
+
+[32m[✓][39m Android Studio (version 3.4)
+    [32m•[39m Android Studio at C:\Program Files\Android\Android Studio
+    [32m•[39m Flutter plugin version 37.1.1
+    [32m•[39m Dart plugin version 183.6270
+    [32m•[39m Java version OpenJDK Runtime Environment (build 1.8.0_152-release-1343-b01)
+
+[33m[!][39m IntelliJ IDEA Community Edition (version 2019.1)
+    [32m•[39m IntelliJ at C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2018.3.4
+    [31m✗[39m Flutter plugin not installed; this adds Flutter specific functionality.
+    [31m✗[39m Dart plugin not installed; this adds Dart specific functionality.
+    [32m•[39m For information about installing plugins, see
+      https://flutter.dev/intellij-setup/#installing-the-plugins
+
+[33m[!][39m IntelliJ IDEA Ultimate Edition (version 2019.1)
+    [32m•[39m IntelliJ at C:\Users\DELL\AppData\Local\JetBrains\Toolbox\apps\IDEA-U\ch-0\191.7141.44
+    [31m✗[39m Flutter plugin not installed; this adds Flutter specific functionality.
+    [31m✗[39m Dart plugin not installed; this adds Dart specific functionality.
+    [32m•[39m For information about installing plugins, see
+      https://flutter.dev/intellij-setup/#installing-the-plugins
+
+[32m[✓][39m VS Code (version 1.36.1)
+    [32m•[39m VS Code at C:\Users\DELL\AppData\Local\Programs\Microsoft VS Code
+    [32m•[39m Flutter extension version 3.2.0
+
+[32m[✓][39m Connected device (1 available)
+    [32m•[39m SM A105F • RF8M50CPA3V • android-arm • Android 9 (API 28)
+
+[33m![39m Doctor found issues in 2 categories.
+```

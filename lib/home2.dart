@@ -91,7 +91,7 @@ class HomePage2 extends StatelessWidget {
           child: SingleChildScrollView(
           child : Column(
           children: <Widget>[
-            SizedBox(height: 130,),
+            SizedBox(height: 30,),
             Row(
               children : [
               Padding(

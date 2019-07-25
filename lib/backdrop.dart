@@ -159,7 +159,7 @@ class _BackdropState extends State<Backdrop>
       title: Text('Marine Turquoise'),
       actions: <Widget>[
         // TODO: Add shortcut to login screen from trailing icons (104)
-        IconButton(
+       /* IconButton(
           icon: Icon(
             Icons.search,
             semanticLabel: 'search',
@@ -176,7 +176,7 @@ class _BackdropState extends State<Backdrop>
           onPressed: () {
             // TODO: Add open login (104)
           },
-        ),
+        ),*/
       ],
     );
     return Scaffold(
