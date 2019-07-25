@@ -32,6 +32,7 @@ class HomePage2 extends StatelessWidget {
           child :GestureDetector(
             onTap: () async{
               String profil;
+              String phone;
               FirebaseUser user1 = await FirebaseAuth.instance.currentUser();
               Firestore.instance
                   .collection('utilisateurs')
@@ -39,8 +40,9 @@ class HomePage2 extends StatelessWidget {
                   .get()
                   .then((DocumentSnapshot ds) {
                 profil = ds['categorie'].toString();
+                phone = ds['tel'].toString();
                 Category g = Category.values.firstWhere((e) => e.toString() == 'Category.' + Titre);
-                Navigator.pushNamed(context, '/products' , arguments: sdata(g,profil));
+                Navigator.pushNamed(context, '/products' , arguments: sdata(g,profil,phone));
               });
 
 
@@ -50,7 +52,10 @@ class HomePage2 extends StatelessWidget {
                height: MediaQuery.of(context).size.height * h,//0.3,
                 width: MediaQuery.of(context).size.width * w ,//0.45,
               decoration: new BoxDecoration(
-                image: new DecorationImage(image: new AssetImage(image),
+
+                image: new DecorationImage(
+                  colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.8), BlendMode.dstATop),
+                  image: new AssetImage(image ),
                 fit: BoxFit.cover,
             )
               ),
@@ -67,9 +72,14 @@ class HomePage2 extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(
-                        Titre,
-                      style: TextStyle(color: Colors.white,fontSize: 20.0),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height*0.06
+                ),
+                    Center(
+                      child: Text(
+                          Titre,
+                        style: TextStyle(color: Colors.white,fontSize: 20.0),
+                      ),
                     ),
                   ],
                 ),
@@ -119,7 +129,8 @@ class HomePage2 extends StatelessWidget {
 class sdata {
 
   Category title;
-  String user;
+  String userCateg;
+  String userPhone;
 
-  sdata(this.title,this.user);
+  sdata(this.title,this.userCateg,this.userPhone);
 }

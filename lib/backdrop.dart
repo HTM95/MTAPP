@@ -143,7 +143,7 @@ class _BackdropState extends State<Backdrop>
   Widget build(BuildContext context) {
     sdata D = ModalRoute.of(context).settings.arguments;
     Category categ = D.title;
-    String profil = D.user;
+    String profil = D.userCateg;
     // TODO: implement build
     var appBar = AppBar(
       brightness: Brightness.light,

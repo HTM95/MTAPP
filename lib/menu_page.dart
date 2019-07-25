@@ -22,7 +22,7 @@ class MenuPage extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     sdata D = ModalRoute.of(context).settings.arguments;
     Category categ = D.title;
-    String profil = D.user;
+    String profil = D.userCateg;
     return GestureDetector(
       onTap: () => {
         if (category == Category.Contactus){

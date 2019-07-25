@@ -116,7 +116,7 @@ class _ProductDetailState extends State<ProductDetailUI> with TickerProviderStat
                           SizedBox(height: 40,),
                           Opacity(
                             opacity: _priceAnim.value,
-                            child: Text( document['prix' + D.profil].toString() + ' DH', style: TextStyle(
+                            child: Text( document['prix' + D.userCateg].toString() + ' DH', style: TextStyle(
                               //TODO : currentindex
                               fontSize: 35,
                               fontFamily: "Montserrat-Bold",
@@ -197,7 +197,7 @@ class _ProductDetailState extends State<ProductDetailUI> with TickerProviderStat
 
                     child:GestureDetector(
                     onTap: (){
-                      cmd.displayDialog(context , document);
+                      cmd.displayDialog(context , document,D.userPhone);
                     },
                     child : Container(
                     color: Colors.indigo,

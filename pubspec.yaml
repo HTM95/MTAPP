@@ -2,7 +2,8 @@ name: Shrine
 description: Learn the basics of using Material Components by building a simple app with core components.
 
 dependencies:
-
+  dio: 2.1.1
+  random_string: ^1.1.0
   firebase_auth: ^0.11.1+8
   flutter:
     sdk: flutter
@@ -12,6 +13,7 @@ dependencies:
   shrine_images: 1.1.1
 
 dev_dependencies:
+
   toast: ^0.1.5
   url_launcher: ^4.2.0+3
   cloud_firestore : 0.12.7

@@ -10,11 +10,11 @@ class ProductsPageFS extends StatefulWidget{
 class _ProductsPageStateFS extends State<ProductsPageFS>{
   Commande_Repository cmd = new Commande_Repository();
 
- Widget _buildListItem2(BuildContext context , DocumentSnapshot document ,String profil ){
+ Widget _buildListItem2(BuildContext context , DocumentSnapshot document ,String profil ,String phone){
       return GestureDetector(
         onTap: () {
           Navigator.pushNamed(context, '/details',
-              arguments:dataDetails(document,profil)
+              arguments:dataDetails(document,profil,phone)
           );
         },
         child: Card(
@@ -60,7 +60,7 @@ class _ProductsPageStateFS extends State<ProductsPageFS>{
                         ),
                         //TODO : Add popup to select qte
                         onPressed: () {
-                          cmd.displayDialog(context , document);
+                          cmd.displayDialog(context , document , phone);
                         },
                       ),
                     ],
@@ -78,7 +78,8 @@ class _ProductsPageStateFS extends State<ProductsPageFS>{
   Widget build(BuildContext context) {
     sdata D = ModalRoute.of(context).settings.arguments;
     String categ = D.title.toString().split('.').last;
-    String profil = D.user;
+    String profil = D.userCateg;
+    String phone = D.userPhone;
     // TODO: Return an AsymmetricView (104)
     // return  AsymmetricView(products: ProductsRepository.loadProducts(Category.all));
     return
@@ -91,7 +92,7 @@ class _ProductsPageStateFS extends State<ProductsPageFS>{
               gridDelegate:
               new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
                 itemBuilder: (context,index)=>
-                    _buildListItem2(context , snapshot.data.documents[index], profil),
+                    _buildListItem2(context , snapshot.data.documents[index], profil , phone),
             );
             },
           );
@@ -100,7 +101,7 @@ class _ProductsPageStateFS extends State<ProductsPageFS>{
 
 class dataDetails{
   DocumentSnapshot documentSnapshot;
-  String profil;
-
-  dataDetails(this.documentSnapshot,this.profil);
+  String userCateg;
+  String userPhone;
+  dataDetails(this.documentSnapshot,this.userCateg,this.userPhone);
 }
