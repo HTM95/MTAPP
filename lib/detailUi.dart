@@ -32,7 +32,7 @@ class _ProductDetailState extends State<ProductDetailUI> with TickerProviderStat
 
   void _nextImage(){
     setState(() {
-      if(currentIndex < 3){
+      if(currentIndex < 2){
         currentIndex ++;
       }else{
         currentIndex = currentIndex;
@@ -129,7 +129,7 @@ class _ProductDetailState extends State<ProductDetailUI> with TickerProviderStat
                           ),
                           SizedBox(
                             width: 70.0,
-                            child: PageIndicator(currentIndex,3),
+                            child: PageIndicator(currentIndex,2),
                             //child: PageIn,
                           )
                         ],

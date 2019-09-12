@@ -36,7 +36,7 @@ class Commande_Repository {
                     //DocumentReference refClient = Firestore.instance.collection('client').document(user.uid);
                     Dio dio = new Dio();
                     try {
-                      await dio.post("http://192.168.1.9:8080/api/v1/sms", data: {"phoneNumber": phone, "message": codeCmd});
+                      await dio.post("http://192.168.41.181:8080/api/v1/sms", data: {"phoneNumber": phone, "message": codeCmd});
                       print('successful');
                     } catch (e) {
                       print(e);
