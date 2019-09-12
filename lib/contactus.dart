@@ -168,12 +168,15 @@ class _ContactUsState extends State<ContactUs>{
                     Container(
                       margin: const EdgeInsets.only(left: 15),
                       child: InkWell(
-                        child: Text("WhatsApp",
+                        child:  new Tab(
+                            icon: new Image.asset('assets/wtsp50.png')
+                        ),
+                        /*Text("WhatsApp",
                             style: TextStyle(
                               fontSize: 22,
                               color: Colors.lightBlue,
                               fontWeight: FontWeight.bold,
-                            )),
+                            )),*/
                         onTap: () async {
                           var phone = "+212657905773";
                           //var whatsappUrl ="whatsapp://send?phone=$phone";
