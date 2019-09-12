@@ -154,6 +154,52 @@ class _ContactUsState extends State<ContactUs>{
                   ],
                 ),
               ),
+              Container(
+                //margin: const EdgeInsets.only(left: 90),
+                //padding: EdgeInsets.only(right: 1),
+                child: Row(
+                  children: <Widget>[
+                    SizedBox(
+                      height: 80,
+                    ),
+                    new Tab(
+                      icon: new Image.asset('assets/fb.png'),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(left: 15),
+                      child: InkWell(
+                        child: Text("WhatsApp",
+                            style: TextStyle(
+                              fontSize: 22,
+                              color: Colors.lightBlue,
+                              fontWeight: FontWeight.bold,
+                            )),
+                        onTap: () async {
+                          var phone = "+212657905773";
+                          //var whatsappUrl ="whatsapp://send?phone=$phone";
+                          if (
+                            /*await canLaunch("whatsapp://send?phone=$phone"){
+                              launch("whatsapp://send?phone=$phone");
+                            }*/
+                          await canLaunch("whatsapp://send?phone=$phone")) {
+                            await launch("whatsapp://send?phone=$phone");
+                          }
+                        },
+                      ),
+                      /*child: Text('Facebook',
+                          style: TextStyle(
+                            fontSize: 22,
+                            color: Colors.lightBlue,
+                            fontWeight: FontWeight.bold,
+                          )),*/
+                    ),
+                    /*Image.asset(assets/images/tel.png),
+                    Icon(Icons.accessibility),
+                    Icon(Icons.access_alarm),
+                    Icon(Icons.accessible_forward),*/
+                  ],
+                ),
+              ),
             ],
           ),
         ),
