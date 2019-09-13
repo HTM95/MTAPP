@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'model/product.dart';
 import 'home2.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 const double _kFlingVelocity = 2.0;
 class Backdrop extends StatefulWidget{
   final Category currentCategory ;
@@ -159,15 +159,20 @@ class _BackdropState extends State<Backdrop>
       title: Text('Marine Turquoise'),
       actions: <Widget>[
         // TODO: Add shortcut to login screen from trailing icons (104)
-       /* IconButton(
-          icon: Icon(
-            Icons.search,
-            semanticLabel: 'search',
-          ),
-          onPressed: () {
-            // TODO: Add open login (104)
-          },
-        ),
+       IconButton(
+          icon: new Image.asset('assets/wtsp50.png'),
+          onPressed:  () async {
+             var phone = "+212657905773";
+              //var whatsappUrl ="whatsapp://send?phone=$phone";
+               if (
+              /*await canLaunch("whatsapp://send?phone=$phone"){
+                              launch("whatsapp://send?phone=$phone");
+                            }*/
+                 await canLaunch("whatsapp://send?phone=$phone")) {
+                 await launch("whatsapp://send?phone=$phone");
+            }
+           },
+        /*
         IconButton(
           icon: Icon(
             Icons.tune,
@@ -177,7 +182,7 @@ class _BackdropState extends State<Backdrop>
             // TODO: Add open login (104)
           },
         ),*/
-      ],
+       )],
     );
     return Scaffold(
       appBar: appBar,
