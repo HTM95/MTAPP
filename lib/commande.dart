@@ -30,36 +30,37 @@ class Commande_Repository {
                       document['qte']) {
                     FirebaseUser user = await FirebaseAuth.instance
                         .currentUser();
-                    if(user==null){
-                      Navigator.pushNamed(context, '/first_screen');
-                    }else{
-                    String codeCmd = randomAlpha(6);
-                    //DocumentReference refProd = Firestore.instance.collection('products').document(document.documentID);
-                    //DocumentReference refClient = Firestore.instance.collection('client').document(user.uid);
-                    Dio dio = new Dio();
-                    try {
-                      await dio.post("http://192.168.41.181:8080/api/v1/sms", data: {"phoneNumber": phone, "message": codeCmd});
-                      print('successful');
-                    } catch (e) {
-                      print(e);
-                    }
-                    Map<String, dynamic> data = {
-                      'dateCommande': Timestamp.fromDate(DateTime.now()),
-                      'produit': document.documentID.toString(),
-                      'qte': _textFieldController.text.toString(),
-                      'client': user.uid.toString(),
-                      'code' : codeCmd,
-                      'valider': false,
-                    };
-                    //TODO : Ajouter la reffenrence du client et du produit
+                    if(user!=null){
+                      String codeCmd = randomAlpha(6);
+                      //DocumentReference refProd = Firestore.instance.collection('products').document(document.documentID);
+                      //DocumentReference refClient = Firestore.instance.collection('client').document(user.uid);
+                    /*  Dio dio = new Dio();
+                      try {
+                        await dio.post("http://192.168.41.181:8080/api/v1/sms", data: {"phoneNumber": phone, "message": codeCmd});
+                        print('successful');
+                      } catch (e) {
+                        print(e);
+                      }*/
+                      Map<String, dynamic> data = {
+                        'dateCommande': Timestamp.fromDate(DateTime.now()),
+                        'produit': document.documentID.toString(),
+                        'qte': _textFieldController.text.toString(),
+                        'client': user.uid.toString(),
+                        'code' : codeCmd,
+                        'valider': false,
+                      };
+                      //TODO : Ajouter la reffenrence du client et du produit
 
-                    Firestore.instance.collection('commande').document()
-                        .setData(data).whenComplete(() {
-                      Navigator.of(context).pop();
-                      _textFieldController.clear();
-                      Toast.show('Commande réusite', context,
-                          duration: Toast.LENGTH_LONG);
-                    });
+                      Firestore.instance.collection('commande').document()
+                          .setData(data).whenComplete(() {
+                        Navigator.of(context).pop();
+                        _textFieldController.clear();
+                        Toast.show('Commande réusite', context,
+                            duration: Toast.LENGTH_LONG);
+                      });
+
+                    }else{
+                      Navigator.pushNamed(context, '/first_screen');
                     }
                   } else {
                     Toast.show('quantité non valable', context,
