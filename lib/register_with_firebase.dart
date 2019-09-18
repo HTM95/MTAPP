@@ -17,7 +17,7 @@ class _UserRegisterState extends State<UserRegister>{
   final nameController = TextEditingController();
   final telController = TextEditingController();
   final catController = TextEditingController();
-  var _categUsers = ['Vendeur', 'Fournisseur', 'Particulier'];
+  var _categUsers = ['Prescripteur', 'Revendeur', 'Professionnel', 'Particulier'];
   var _currentItemSelected = 'Particulier';
 
   final _formKey = GlobalKey<FormState>();

@@ -58,8 +58,48 @@ class _ContactUsState extends State<ContactUs>{
                               fontWeight: FontWeight.bold,
                             )),
                         onTap: () async {
-                          if (await canLaunch("tel://0631-323232")) {
-                            await launch("tel://0631-323232");
+                          if (await canLaunch("tel://+212631323232")) {
+                            await launch("tel://+212631323232");
+                          }
+                        },
+                      ),
+                      /*child: Text('0607080910',
+                          style: TextStyle(
+                            fontSize: 22,
+                            color: Colors.lightBlue,
+                            fontWeight: FontWeight.bold,
+                          )),*/
+                    ),
+                    /*Image.asset(assets/images/tel.png),
+                    Icon(Icons.accessibility),
+                    Icon(Icons.access_alarm),
+                    Icon(Icons.accessible_forward),*/
+                  ],
+                ),
+              ),
+              Container(
+                //margin: const EdgeInsets.only(left: 90),
+                //padding: EdgeInsets.only(top: 5),
+                child: Row(
+                  children: <Widget>[
+                    SizedBox(
+                      height: 80,
+                    ),
+                    new Tab(
+                      icon: new Image.asset('assets/tel.png'),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(left: 14),
+                      child: InkWell(
+                        child: Text("0520-481780",
+                            style: TextStyle(
+                              fontSize: 22,
+                              color: Colors.lightBlue,
+                              fontWeight: FontWeight.bold,
+                            )),
+                        onTap: () async {
+                          if (await canLaunch("tel://+212520481780")) {
+                            await launch("tel://+212520481780");
                           }
                         },
                       ),
@@ -128,64 +168,15 @@ class _ContactUsState extends State<ContactUs>{
                     Container(
                       margin: const EdgeInsets.only(left: 15),
                       child: InkWell(
-                        child: Text("Marine Turquoise",
+                        child: Text("Mosaics",
                             style: TextStyle(
                               fontSize: 22,
                               color: Colors.lightBlue,
                               fontWeight: FontWeight.bold,
                             )),
                         onTap: () async {
-                          if (await canLaunch("https://www.facebook.com/MarineTurquoise/")) {
-                            await launch("https://www.facebook.com/MarineTurquoise/");
-                          }
-                        },
-                      ),
-                      /*child: Text('Facebook',
-                          style: TextStyle(
-                            fontSize: 22,
-                            color: Colors.lightBlue,
-                            fontWeight: FontWeight.bold,
-                          )),*/
-                    ),
-                    /*Image.asset(assets/images/tel.png),
-                    Icon(Icons.accessibility),
-                    Icon(Icons.access_alarm),
-                    Icon(Icons.accessible_forward),*/
-                  ],
-                ),
-              ),
-              Container(
-                //margin: const EdgeInsets.only(left: 90),
-                //padding: EdgeInsets.only(right: 1),
-                child: Row(
-                  children: <Widget>[
-                    SizedBox(
-                      height: 80,
-                    ),
-                    new Tab(
-                      icon: new Image.asset('assets/fb.png'),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(left: 15),
-                      child: InkWell(
-                        child:  new Tab(
-                            icon: new Image.asset('assets/wtsp50.png')
-                        ),
-                        /*Text("WhatsApp",
-                            style: TextStyle(
-                              fontSize: 22,
-                              color: Colors.lightBlue,
-                              fontWeight: FontWeight.bold,
-                            )),*/
-                        onTap: () async {
-                          var phone = "+212657905773";
-                          //var whatsappUrl ="whatsapp://send?phone=$phone";
-                          if (
-                            /*await canLaunch("whatsapp://send?phone=$phone"){
-                              launch("whatsapp://send?phone=$phone");
-                            }*/
-                          await canLaunch("whatsapp://send?phone=$phone")) {
-                            await launch("whatsapp://send?phone=$phone");
+                          if (await canLaunch("https://www.facebook.com/mosaicspool/?ref=br_rs")) {
+                            await launch("https://www.facebook.com/mosaicspool/?ref=br_rs");
                           }
                         },
                       ),

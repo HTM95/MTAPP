@@ -14,7 +14,7 @@ class Commande_Repository {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text('Saisir la Quantité'),
+            title: Text('Saisir la quantité'),
             content: TextField(
               keyboardType: TextInputType.number,
               controller: _textFieldController,
@@ -55,7 +55,7 @@ class Commande_Repository {
                           .setData(data).whenComplete(() {
                         Navigator.of(context).pop();
                         _textFieldController.clear();
-                        Toast.show('Commande réusite', context,
+                        Toast.show('Commande réussite', context,
                             duration: Toast.LENGTH_LONG);
                       });
 
@@ -63,7 +63,7 @@ class Commande_Repository {
                       Navigator.pushNamed(context, '/first_screen');
                     }
                   } else {
-                    Toast.show('quantité non valable', context,
+                    Toast.show('Quantité non valable', context,
                         duration: Toast.LENGTH_LONG);
                   }
                 },
