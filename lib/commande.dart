@@ -30,7 +30,9 @@ class Commande_Repository {
                       document['qte']) {
                     FirebaseUser user = await FirebaseAuth.instance
                         .currentUser();
-
+                    if(user==null){
+                      Navigator.pushNamed(context, '/first_screen');
+                    }else{
                     String codeCmd = randomAlpha(6);
                     //DocumentReference refProd = Firestore.instance.collection('products').document(document.documentID);
                     //DocumentReference refClient = Firestore.instance.collection('client').document(user.uid);
@@ -58,6 +60,7 @@ class Commande_Repository {
                       Toast.show('Commande réusite', context,
                           duration: Toast.LENGTH_LONG);
                     });
+                    }
                   } else {
                     Toast.show('quantité non valable', context,
                         duration: Toast.LENGTH_LONG);

@@ -109,11 +109,13 @@ class _ShrineAppState extends State<ShrineApp> {
         '/emailConfirm' : (BuildContext context) => EmailConfirmation(),
         '/home2' : (BuildContext context) => HomePage2(),
         '/contactus' : (BuildContext context) => ContactUs(),
+        '/first_screen': (BuildContext context) =>UserLogin(),
       },
       // TODO: Make currentCategory field take _currentCategory (104)
       // TODO: Pass _currentCategory for frontLayer (104)
       // TODO: Change backLayer field value to CategoryMenuPage (104)
-      initialRoute: '/first_screen',
+     // initialRoute: '/first_screen',
+      initialRoute: '/home2',
       onGenerateRoute: _getRoute,
       theme: _kShrineTheme,
       // TODO: Add a theme (103)
@@ -121,13 +123,14 @@ class _ShrineAppState extends State<ShrineApp> {
   }
 
   Route<dynamic> _getRoute(RouteSettings settings) {
-    if (settings.name != '/first_screen') {
+    if (settings.name != '/home2') {
       return null;
     }
 
     return MaterialPageRoute<void>(
       settings: settings,
-      builder: (BuildContext context) => UserLogin(),
+      //builder: (BuildContext context) => UserLogin(),
+      builder: (BuildContext context) => HomePage2(),
       fullscreenDialog: true,
     );
   }

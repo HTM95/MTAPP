@@ -34,18 +34,23 @@ class HomePage2 extends StatelessWidget {
               String profil;
               String phone;
               FirebaseUser user1 = await FirebaseAuth.instance.currentUser();
-              Firestore.instance
-                  .collection('utilisateurs')
-                  .document(user1.uid)
-                  .get()
-                  .then((DocumentSnapshot ds) {
-                profil = ds['categorie'].toString();
-                phone = ds['tel'].toString();
+              if(user1!=null){
+                Firestore.instance
+                    .collection('utilisateurs')
+                    .document(user1.uid)
+                    .get()
+                    .then((DocumentSnapshot ds) {
+                  profil = ds['categorie'].toString();
+                  phone = ds['tel'].toString();
+                  Category g = Category.values.firstWhere((e) => e.toString() == 'Category.' + Titre);
+                  Navigator.pushNamed(context, '/products' , arguments: sdata(g,profil,phone));
+                });
+              }else{
+                profil = "Particulier";
+                phone = "0000";
                 Category g = Category.values.firstWhere((e) => e.toString() == 'Category.' + Titre);
                 Navigator.pushNamed(context, '/products' , arguments: sdata(g,profil,phone));
-              });
-
-
+              }
             },
           child:Container(
               padding: EdgeInsets.only(left: 10.0),
