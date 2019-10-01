@@ -156,7 +156,7 @@ class _BackdropState extends State<Backdrop>
       ),
       // TODO: Remove leading property (104)
       // TODO: Create title with _BackdropTitle parameter (104)
-      title: Text('Marine Turquoise'),
+      title: Text('Mosaics'),
       actions: <Widget>[
         // TODO: Add shortcut to login screen from trailing icons (104)
        IconButton(

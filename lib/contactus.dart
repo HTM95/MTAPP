@@ -131,7 +131,7 @@ class _ContactUsState extends State<ContactUs>{
                     Container(
                       margin: const EdgeInsets.only(left: 15),
                       child: InkWell(
-                        child: Text("Marine Turquoise",
+                        child: Text("Mosaics",
                             style: TextStyle(
                               fontSize: 22,
                               color: Colors.lightBlue,
