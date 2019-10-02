@@ -22,7 +22,7 @@ class HomePage2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Stack _buildBox(String image , double h , double w , String Titre){
+    Stack _buildBox(String image , double h , double w , String categ,String Title){
 
       return Stack(
           children : <Widget>[
@@ -42,13 +42,13 @@ class HomePage2 extends StatelessWidget {
                     .then((DocumentSnapshot ds) {
                   profil = ds['categorie'].toString();
                   phone = ds['tel'].toString();
-                  Category g = Category.values.firstWhere((e) => e.toString() == 'Category.' + Titre);
+                  Category g = Category.values.firstWhere((e) => e.toString() == 'Category.' + categ);
                   Navigator.pushNamed(context, '/products' , arguments: sdata(g,profil,phone));
                 });
               }else{
                 profil = "Particulier";
                 phone = "0000";
-                Category g = Category.values.firstWhere((e) => e.toString() == 'Category.' + Titre);
+                Category g = Category.values.firstWhere((e) => e.toString() == 'Category.' + categ);
                 Navigator.pushNamed(context, '/products' , arguments: sdata(g,profil,phone));
               }
             },
@@ -82,7 +82,7 @@ class HomePage2 extends StatelessWidget {
                 ),
                     Center(
                       child: Text(
-                          Titre,
+                          Title,
                         style: TextStyle(color: Colors.white,fontSize: 20.0),
                       ),
                     ),
@@ -111,17 +111,17 @@ class HomePage2 extends StatelessWidget {
               children : [
               Padding(
               padding: EdgeInsets.all( MediaQuery.of(context).size.height * 0.011),
-            child :_buildBox('assets/tiles.jpg',0.3,0.45,Category.Tiles.toString().split('.').last),
+            child :_buildBox('assets/tiles.jpg',0.3,0.45,Category.Tiles.toString().split('.').last,"Carreaux en pâte de verre"),
             ),
             Padding(
               padding: EdgeInsets.all(10.0),
-              child :_buildBox('assets/fraise.jpg',0.3,0.45,Category.Friezes.toString().split('.').last),
+              child :_buildBox('assets/fraise.jpg',0.3,0.45,Category.Friezes.toString().split('.').last,"Frises"),
             ),
             ]
             ),
             Padding(
               padding: EdgeInsets.all(10.0),
-              child :_buildBox('assets/decor.jpg',0.25,0.8,Category.Decors.toString().split('.').last),
+              child :_buildBox('assets/decor.jpg',0.25,0.8,Category.Decors.toString().split('.').last,"Décors en pâte de verre"),
             ),
           ],
         )
