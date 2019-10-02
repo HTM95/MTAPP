@@ -104,7 +104,7 @@ class _ProductDetailState extends State<ProductDetailUI> with TickerProviderStat
                           ),
                           SizedBox(
                             height:4.0 ,),
-                          Transform.translate(
+                       /*   Transform.translate(
                             offset: Offset(0.0, 20*(1-_tagAnim.value)),
                             child:Opacity(
                               opacity: _tagAnim.value,
@@ -112,7 +112,7 @@ class _ProductDetailState extends State<ProductDetailUI> with TickerProviderStat
                               //TODO : currentindex
                               ),
                             ),
-                          ),
+                          ),*/
                           SizedBox(height: 40,),
                           Opacity(
                             opacity: _priceAnim.value,
@@ -157,16 +157,16 @@ class _ProductDetailState extends State<ProductDetailUI> with TickerProviderStat
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(document['desc'],
+                    Text( "Dimensions " + document['desc'],
                     style: TextStyle(
-                      fontSize: 30.0 ,
+                      fontSize: 20.0 ,
                       fontFamily: "Montserrat-Bold",
                       color: Colors.black,
                     ),
                     ),
-                    Text('Lorem ipsum dolor sit amet,'
-                        ' consectetur adipiscing elit, '
-                        'sed do eiusmod tempor incididunt ut labore',
+                    Text("Déscription"),
+                    Text('Le carrelage de piscine en pâte de verre se présente sous'
+                        'forme de petits carreaux ou tesselles généralement carrés.',
                           style: TextStyle(color: Colors.grey),),
                   ],
                 ),
