@@ -25,7 +25,7 @@ class MenuPage extends StatelessWidget {
     String profil = D.userCateg;
     return GestureDetector(
       onTap: () => {
-        if (category == Category.Contactus){
+        if (category == Category.Contact){
       Navigator.pushNamed(context, '/contactus' ) // contact us
       }else
           {

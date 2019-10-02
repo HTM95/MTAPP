@@ -14,7 +14,7 @@
 
 import 'package:flutter/foundation.dart';
 
-enum Category { Tiles, Friezes, Decors,Contactus }
+enum Category { Carreaux, Frises, Decors, Contact }
 
 class Product {
   const Product({

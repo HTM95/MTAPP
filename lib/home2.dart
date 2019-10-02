@@ -111,11 +111,11 @@ class HomePage2 extends StatelessWidget {
               children : [
               Padding(
               padding: EdgeInsets.all( MediaQuery.of(context).size.height * 0.011),
-            child :_buildBox('assets/tiles.jpg',0.3,0.45,Category.Tiles.toString().split('.').last,"Carreaux en pâte de verre"),
+            child :_buildBox('assets/tiles.jpg',0.3,0.45,Category.Carreaux.toString().split('.').last,"Carreaux en pâte de verre"),
             ),
             Padding(
               padding: EdgeInsets.all(10.0),
-              child :_buildBox('assets/fraise.jpg',0.3,0.45,Category.Friezes.toString().split('.').last,"Frises"),
+              child :_buildBox('assets/fraise.jpg',0.3,0.45,Category.Frises.toString().split('.').last,"Frises"),
             ),
             ]
             ),

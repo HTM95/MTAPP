@@ -80,7 +80,7 @@ class ShrineApp extends StatefulWidget {
 }
 
 class _ShrineAppState extends State<ShrineApp> {
-  Category _currentCategory = Category.Tiles;
+  Category _currentCategory = Category.Carreaux;
   void _onCategoryTap(Category category) {
     setState(() {
       _currentCategory = category;
