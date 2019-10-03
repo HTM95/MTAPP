@@ -26,6 +26,7 @@ import 'detailUi.dart';
 import 'register_with_firebase.dart';
 import 'login_with_firebase.dart';
 import 'products_firestore.dart';
+import 'splash.dart';
 // TODO: Build a Shrine Theme (103)
 final ThemeData _kShrineTheme = _buildShrineTheme();
 
@@ -110,6 +111,7 @@ class _ShrineAppState extends State<ShrineApp> {
         '/home2' : (BuildContext context) => HomePage2(),
         '/contactus' : (BuildContext context) => ContactUs(),
         '/first_screen': (BuildContext context) =>UserLogin(),
+        '/splash': (BuildContext context) =>Splash(),
       },
       // TODO: Make currentCategory field take _currentCategory (104)
       // TODO: Pass _currentCategory for frontLayer (104)
@@ -123,14 +125,14 @@ class _ShrineAppState extends State<ShrineApp> {
   }
 
   Route<dynamic> _getRoute(RouteSettings settings) {
-    if (settings.name != '/home2') {
+    if (settings.name != '/splash') {
       return null;
     }
 
     return MaterialPageRoute<void>(
       settings: settings,
       //builder: (BuildContext context) => UserLogin(),
-      builder: (BuildContext context) => HomePage2(),
+      builder: (BuildContext context) => Splash(),
       fullscreenDialog: true,
     );
   }
