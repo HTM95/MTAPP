@@ -14,7 +14,7 @@ class _SplashState extends State<Splash>{
     // TODO: implement build
     return Scaffold(
       resizeToAvoidBottomPadding: false,
-      backgroundColor: Color(0xFF64B5F6),
+      backgroundColor: Color(0xFFB3E5FC),
       body: Center(
         child: Container(child: ConstrainedBox(
             constraints: BoxConstraints.expand(),

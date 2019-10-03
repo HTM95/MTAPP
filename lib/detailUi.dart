@@ -119,7 +119,7 @@ class _ProductDetailState extends State<ProductDetailUI> with TickerProviderStat
                             child: Text( document['prix' + D.userCateg].toString() + ' DH', style: TextStyle(
                               //TODO : currentindex
                               fontSize: 35,
-                              fontFamily: "Montserrat-Bold",
+                                fontFamily: "Quicksand",
                               color: Colors.white
                             ),
                             ),
@@ -160,14 +160,14 @@ class _ProductDetailState extends State<ProductDetailUI> with TickerProviderStat
                     Text( "Dimensions " + document['desc'],
                     style: TextStyle(
                       fontSize: 20.0 ,
-                      fontFamily: "Montserrat-Bold",
+                     fontFamily: "Quicksand",
                       color: Colors.black,
                     ),
                     ),
-                    Text("Description"),
+                    Text("Description",style: TextStyle(color: Colors.grey , fontFamily: "Quicksand",)),
                     Text('Le carrelage de piscine en pâte de verre se présente sous'
                         'forme de petits carreaux ou tesselles généralement carrés.',
-                          style: TextStyle(color: Colors.grey),),
+                          style: TextStyle(color: Colors.grey , fontFamily: "Quicksand",),),
                   ],
                 ),
 

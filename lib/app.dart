@@ -117,7 +117,7 @@ class _ShrineAppState extends State<ShrineApp> {
       // TODO: Pass _currentCategory for frontLayer (104)
       // TODO: Change backLayer field value to CategoryMenuPage (104)
      // initialRoute: '/first_screen',
-      initialRoute: '/home2',
+      initialRoute: '/splash',
       onGenerateRoute: _getRoute,
       theme: _kShrineTheme,
       // TODO: Add a theme (103)

@@ -83,7 +83,8 @@ class HomePage2 extends StatelessWidget {
                     Center(
                       child: Text(
                           Title,
-                        style: TextStyle(color: Colors.white,fontSize: 20.0),
+                        style: TextStyle(color: Colors.white ,fontSize: 27.0,fontFamily: 'Josefin Sans'),
+                        textAlign: TextAlign.center,
                       ),
                     ),
                   ],
