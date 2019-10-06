@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:toast/toast.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 class UserRegister extends StatefulWidget{
 
@@ -21,7 +22,8 @@ class _UserRegisterState extends State<UserRegister>{
   var _currentItemSelected = 'Particulier';
 
   final _formKey = GlobalKey<FormState>();
-
+  //final FirebaseMessaging _messaging = FirebaseMessaging();
+ // var  devToken='';
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
@@ -292,6 +294,10 @@ class _UserRegisterState extends State<UserRegister>{
       }*/
       //else{
         try {
+
+         /* _messaging.getToken().then((token)=>{
+            devToken=token
+          });*/
           FirebaseUser user = await FirebaseAuth.instance
               .createUserWithEmailAndPassword(
               email: emailController.text.trim(), password: pwdController.text);
@@ -303,7 +309,8 @@ class _UserRegisterState extends State<UserRegister>{
               { 'nom': nameController.text,
                 'email': emailController.text.trim(),
                 'tel': "+212"+telController.text.substring(1),
-                'categorie': _currentItemSelected
+                'categorie': _currentItemSelected,
+                'devtoken': ""
               });
           Navigator.of(context).pushNamed('/home2');
         } catch (e) {

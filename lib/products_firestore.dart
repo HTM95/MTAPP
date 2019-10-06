@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'commande.dart';
 import 'home2.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ProductsPageFS extends StatefulWidget{
   _ProductsPageStateFS createState()=> _ProductsPageStateFS();
@@ -24,10 +25,17 @@ class _ProductsPageStateFS extends State<ProductsPageFS>{
             children: <Widget>[
               AspectRatio(
                 aspectRatio: 18 / 9,
-                child: Image.network(
-                  document['imageUrl1'].toString(),
+                child: CachedNetworkImage(
+                  imageUrl: document['imageUrl1'].toString(),
+                  placeholder: (context, url) => new CircularProgressIndicator(),
+                  errorWidget: (context, url, error) => new Icon(Icons.error),
                   fit: BoxFit.fitWidth,
                 ),
+
+                /*Image.network(
+                  document['imageUrl1'].toString(),
+                  fit: BoxFit.fitWidth,
+                ),*/
               ),
               Expanded(
                 child: Padding(

@@ -26,6 +26,7 @@ class Commande_Repository {
                 child: new Text(
                   'Commander', style: TextStyle(color: Colors.white),),
                 onPressed: () async {
+
                   if (int.parse(_textFieldController.text.toString()) <=
                       document['qte']) {
                     FirebaseUser user = await FirebaseAuth.instance
@@ -47,7 +48,8 @@ class Commande_Repository {
                         'qte': _textFieldController.text.toString(),
                         'client': user.uid.toString(),
                         'code' : codeCmd,
-                        'valider': false,
+                        'visible': false,
+                        'state' : "",
                       };
                       //TODO : Ajouter la reffenrence du client et du produit
 

@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:toast/toast.dart';
@@ -13,8 +14,8 @@ class _UserLoginState extends State<UserLogin> {
   //String _email, _password;
   final emailController = TextEditingController();
   final pwdController = TextEditingController();
-
   final _formKey = GlobalKey<FormState>();
+  var  devToken='';
 
   @override
   void dispose() {
@@ -201,6 +202,7 @@ class _UserLoginState extends State<UserLogin> {
       formState.save();
       try{
         FirebaseUser user = await FirebaseAuth.instance.signInWithEmailAndPassword(email: emailController.text, password: pwdController.text);
+
         Toast.show('Connecté', context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
         Navigator.of(context).pushNamed('/home2');
       }catch(e){

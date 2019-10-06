@@ -13,12 +13,14 @@
 // limitations under the License.
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'model/product.dart';
 
 class HomePage2 extends StatelessWidget {
 
+  FirebaseMessaging _messaging = FirebaseMessaging();
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +35,20 @@ class HomePage2 extends StatelessWidget {
             onTap: () async{
               String profil;
               String phone;
+
               FirebaseUser user1 = await FirebaseAuth.instance.currentUser();
               if(user1!=null){
+                _messaging.getToken().then((token)=>{
+                Firestore.instance.collection("utilisateurs").document(user1.uid).updateData({ 'devtoken': token,}),
+                    print('token ' + token.toString()),
+                });
+
                 Firestore.instance
                     .collection('utilisateurs')
                     .document(user1.uid)
                     .get()
                     .then((DocumentSnapshot ds) {
+                  
                   profil = ds['categorie'].toString();
                   phone = ds['tel'].toString();
                   Category g = Category.values.firstWhere((e) => e.toString() == 'Category.' + categ);
@@ -83,7 +92,7 @@ class HomePage2 extends StatelessWidget {
                     Center(
                       child: Text(
                           Title,
-                        style: TextStyle(color: Colors.white ,fontSize: 27.0,fontFamily: 'Josefin Sans'),
+                        style: TextStyle(color: Colors.white ,fontSize: 20.0,fontFamily: 'Josefin Sans'),
                         textAlign: TextAlign.center,
                       ),
                     ),

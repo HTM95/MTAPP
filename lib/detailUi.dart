@@ -164,7 +164,7 @@ class _ProductDetailState extends State<ProductDetailUI> with TickerProviderStat
                       color: Colors.black,
                     ),
                     ),
-                    Text("Description",style: TextStyle(color: Colors.grey , fontFamily: "Quicksand",)),
+                    Text("Description",style: TextStyle(color: Colors.blueAccent, fontFamily: "Quicksand",)),
                     Text('Le carrelage de piscine en pâte de verre se présente sous'
                         'forme de petits carreaux ou tesselles généralement carrés.',
                           style: TextStyle(color: Colors.grey , fontFamily: "Quicksand",),),
