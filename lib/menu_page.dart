@@ -3,6 +3,7 @@ import 'package:meta/meta.dart';
 import 'home2.dart';
 import 'colors.dart';
 import 'model/product.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class MenuPage extends StatelessWidget {
   final Category currentCategory;
@@ -26,7 +27,10 @@ class MenuPage extends StatelessWidget {
     return GestureDetector(
       onTap: () => {
         if (category == Category.Contact){
-      Navigator.pushNamed(context, '/contactus' ) // contact us
+          Navigator.pushNamed(context, '/contactus' )// contact us
+      }else if (category == Category.Logout){
+        FirebaseAuth.instance.signOut(),
+        Navigator.of(context).pushNamed('/first_screen')
       }else
           {
             D.title = category,
