@@ -108,7 +108,7 @@ class HomePage2 extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/background.png"),
+            image: AssetImage('assets/background.png'),
             fit: BoxFit.cover,
           ),
         ),
