@@ -18,7 +18,7 @@ class Commande_Repository {
             content: TextField(
               keyboardType: TextInputType.number,
               controller: _textFieldController,
-              decoration: InputDecoration(hintText: ""),
+              decoration: InputDecoration(hintText: "En mètre carré"),
             ),
             actions: <Widget>[
               new RaisedButton(
@@ -57,7 +57,7 @@ class Commande_Repository {
                           .setData(data).whenComplete(() {
                         Navigator.of(context).pop();
                         _textFieldController.clear();
-                        Toast.show('Commande réussite', context,
+                        Toast.show('Commande réussie', context,
                             duration: Toast.LENGTH_LONG);
                       });
 
