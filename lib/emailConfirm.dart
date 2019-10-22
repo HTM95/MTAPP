@@ -62,14 +62,6 @@ class _EmailConfirmationState extends State<EmailConfirmation> {
                     Expanded(
                       child: Container(
                         margin: const EdgeInsets.only(left: 35, right: 35),
-                        decoration: new BoxDecoration(
-                          border: Border.all(
-                              width: 0.5
-                          ),
-                          borderRadius: BorderRadius.all(
-                              Radius.circular(25) //                 <--- border radius here
-                          ),
-                        ),
                         child: Column(
                           children: <Widget>[
                             //BorderRadius.all(Radius.circular(25)),
@@ -79,18 +71,30 @@ class _EmailConfirmationState extends State<EmailConfirmation> {
                               keyboardType: TextInputType.emailAddress,
                               controller: emailController,
                               decoration: InputDecoration(
+                                filled: true,
+                                fillColor: Color(0xFFE1F5FE),
                                 //labelText: "Email",
-                                  hintText: "Email",
-                                  labelStyle: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 16,
-                                  ),
-                                  border: OutlineInputBorder(
-                                    //borderRadius: BorderRadius.all(Radius.circular(25)),
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(25)),
-                                      borderSide: BorderSide(color: Colors.greenAccent, width: 5.0)
-                                  )
+                                hintText: "Email",
+                                labelStyle: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                  borderRadius: BorderRadius.circular(25.7),
+                                ),
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                  borderRadius: BorderRadius.circular(25.7),
+                                ),
+                                /*border: OutlineInputBorder(
+                              //borderRadius: BorderRadius.all(Radius.circular(25)),
+                              borderRadius: BorderRadius.only(
+                                topLeft: const Radius.circular(25.0),
+                                topRight: const Radius.circular(25.0)
+                              ),
+                              borderSide: BorderSide(color: Colors.greenAccent, width: 5.0)
+                            )*/
                               ),
                               /*validator: (input) {
                           if(input.isEmpty){

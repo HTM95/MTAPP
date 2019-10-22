@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -73,13 +74,13 @@ class _UserRegisterState extends State<UserRegister>{
                     //height: MediaQuery.of(context).size.height /3,
                     margin: const EdgeInsets.only(left: 30, right: 30),
                     decoration: new BoxDecoration(
-                      border: Border.all(
-                          width: 0.5
+                      /*border: Border.all(
+                          width: 0.025
                       ),
                       borderRadius: BorderRadius.all(
                           Radius.circular(
                               25) //                 <--- border radius here
-                      ),
+                      ),*/
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,20 +92,30 @@ class _UserRegisterState extends State<UserRegister>{
                           keyboardType: TextInputType.text,
                           controller: nameController,
                           decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Color(0xFFE1F5FE),
                             //labelText: "Email",
                               hintText: "Nom et prénom",
                               labelStyle: TextStyle(
                                 color: Colors.black,
                                 fontSize: 16,
                               ),
-                              border: OutlineInputBorder(
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(25.7),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(25.7),
+                            ),
+                              /*border: OutlineInputBorder(
                                   borderRadius: BorderRadius.only(
                                       topLeft: const Radius.circular(25.0),
                                       topRight: const Radius.circular(25.0)
                                   ),
                                   borderSide: BorderSide(
                                       color: Colors.greenAccent, width: 5.0)
-                              )
+                              )*/
                           ),
                         ),
                         TextField(
@@ -113,18 +124,28 @@ class _UserRegisterState extends State<UserRegister>{
                           keyboardType: TextInputType.emailAddress,
                           controller: emailController,
                           decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Color(0xFFE1F5FE),
                             //labelText: "Email",
                               hintText: "Email",
                               labelStyle: TextStyle(
                                 color: Colors.black,
                                 fontSize: 16,
                               ),
-                              border: OutlineInputBorder(
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(25.7),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(25.7),
+                            ),
+                              /*border: OutlineInputBorder(
                                 //border: Border.all(),
                                 borderRadius: BorderRadius.all(
                                     Radius.circular(0)),
                                 //borderSide: BorderSide(color: Colors.greenAccent, width: 5.0)
-                              )
+                              )*/
                           ),
                           //validator: (value) => value.isEmpty ? 'GGG' : null,
                         ),
@@ -134,18 +155,28 @@ class _UserRegisterState extends State<UserRegister>{
                           keyboardType: TextInputType.phone,
                           controller: telController,
                           decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Color(0xFFE1F5FE),
                             //labelText: "Email",
                               hintText: "Tél : 0612345678",
                               labelStyle: TextStyle(
                                 color: Colors.black,
                                 fontSize: 16,
                               ),
-                              border: OutlineInputBorder(
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(25.7),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(25.7),
+                            ),
+                              /*border: OutlineInputBorder(
                                   borderRadius: BorderRadius.all(
                                       Radius.circular(0)),
                                   borderSide: BorderSide(
                                       color: Colors.greenAccent, width: 5.0)
-                              )
+                              )*/
                           ),
                         ),
                         TextField(
@@ -154,38 +185,52 @@ class _UserRegisterState extends State<UserRegister>{
                           keyboardType: TextInputType.text,
                           controller: pwdController,
                           decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Color(0xFFE1F5FE),
                             //labelText: "Email",
                               hintText: "Mot de passe",
                               labelStyle: TextStyle(
                                 color: Colors.black,
                                 fontSize: 16,
                               ),
-                              border: OutlineInputBorder(
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(25.7),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(25.7),
+                            ),
+                              /*border: OutlineInputBorder(
                                   borderRadius: BorderRadius.all(
                                       Radius.circular(0)),
                                   borderSide: BorderSide(
                                       color: Colors.greenAccent, width: 5.0)
-                              )
+                              )*/
                           ),
                         ),
                         Row(
                           children: <Widget>[
                             Expanded(
                               child: Container(
+                                height: 43,
                                 //height: MediaQuery.of(context).size.height/13.1,
                                 decoration: new BoxDecoration(
-                                  border: Border.all(
-                                      width: 0.5
-                                  ),
-                                  borderRadius: BorderRadius.only(
+                                  color: Color(0xFFE1F5FE),
+                                  /*border: Border.all(
+                                      width: 1.5
+                                  ),*/
+                                  borderRadius: BorderRadius.all(const Radius.circular(25.7)),
+                                  /*borderRadius: BorderRadius.only(
                                       bottomLeft: const Radius.circular(25.0),
                                       bottomRight: const Radius.circular(25.0)
-                                  ),
+                                  ),*/
                                 ),
                                 child: Row(
                                   children: <Widget>[
                                     Expanded(
                                       child: Container(
+
                                         //height: MediaQuery.of(context).size.height/2,
                                         margin: const EdgeInsets.only(left: 12),
                                         child: Row(
@@ -201,8 +246,11 @@ class _UserRegisterState extends State<UserRegister>{
                                             Expanded(
                                               child: Container(
                                                 margin: const EdgeInsets.only(
-                                                    left: 2),
+                                                    left: 2,
+                                                    right: 5
+                                                ),
                                                 child: ButtonTheme(
+
                                                   alignedDropdown: true,
                                                   child: DropdownButton<String>(
                                                     items: _categUsers.map((

@@ -67,12 +67,13 @@ class _UserLoginState extends State<UserLogin> {
                       //height: MediaQuery.of(context).size.height/5.2,
                       margin: const EdgeInsets.only(left: 30),
                       decoration: new BoxDecoration(
-                        border: Border.all(
-                        width: 0.5
-                      ),
-                      borderRadius: BorderRadius.all(
-                          Radius.circular(25) //                 <--- border radius here
-                      ),
+                        /*border: Border.all(
+                          //color: Color(0xFFB3E5FC),
+                        width: 0.001
+                      ),*/
+                      /*borderRadius: BorderRadius.all(
+                          Radius.circular(25), //                 <--- border radius here
+                      ),*/
                       ),
                       child: Column(
                         children: <Widget>[
@@ -83,20 +84,30 @@ class _UserLoginState extends State<UserLogin> {
                           keyboardType: TextInputType.emailAddress,
                           controller: emailController,
                           decoration: InputDecoration(
+                              filled: true,
+                            fillColor: Color(0xFFE1F5FE),
                             //labelText: "Email",
                             hintText: "Email",
                             labelStyle: TextStyle(
                               color: Colors.black,
                               fontSize: 16,
                             ),
-                            border: OutlineInputBorder(
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(25.7),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(25.7),
+                            ),
+                            /*border: OutlineInputBorder(
                               //borderRadius: BorderRadius.all(Radius.circular(25)),
                               borderRadius: BorderRadius.only(
                                 topLeft: const Radius.circular(25.0),
                                 topRight: const Radius.circular(25.0)
                               ),
                               borderSide: BorderSide(color: Colors.greenAccent, width: 5.0)
-                            )
+                            )*/
                           ),
                         /*validator: (input) {
                           if(input.isEmpty){
@@ -113,18 +124,29 @@ class _UserLoginState extends State<UserLogin> {
                       keyboardType: TextInputType.text,
                       controller: pwdController,
                       decoration: InputDecoration(
-                        //labelText: "Password",
+                        filled: true,
+                        fillColor: Color(0xFFE1F5FE),
+                        //labelText: "Email",
                         hintText: "Mot de passe",
                         labelStyle: TextStyle(
+                          height: 1.0,
                           color: Colors.black,
                           fontSize: 16,
                         ),
-                        border: OutlineInputBorder(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                          borderRadius: BorderRadius.circular(25.7),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                          borderRadius: BorderRadius.circular(25.7),
+                        ),
+                        /*border: OutlineInputBorder(
                           borderRadius: BorderRadius.only(
                                 bottomLeft: const Radius.circular(25.0),
                                 bottomRight: const Radius.circular(25.0)
                               ),
-                        )
+                        )*/
                       ),
                       /*validator: (input) {
                           if(input.length < 8){
