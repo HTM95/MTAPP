@@ -20,15 +20,14 @@ dev_dependencies:
   url_launcher: ^4.2.0+3
   cloud_firestore : 0.12.7
   firebase_database: 3.0.4
-  flutter_launcher_icons: "^0.7.2"
+  flutter_launcher_icons: "^0.7.3"
 
 flutter_icons:
-    android: true
-    ios: true
-    image_path_ios: "assets/launcher/icon.png"
-    image_path_android: "assets/launcher/icon.png"
-    adaptive_icon_background: "assets/launcher/Iconbackground.png"
-    adaptive_icon_foreground: "assets/launcher/foreground.png"
+  android: true # can specify file name here e.g. "ic_launcher"
+  ios: true # can specify file name here e.g. "My-Launcher-Icon"
+  image_path_android: "assets/launcher/Icon2.png"
+  image_path_ios: "assets/launcher/Icon2.png"
+
 
 
 
