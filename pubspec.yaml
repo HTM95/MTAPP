@@ -27,7 +27,7 @@ flutter_icons:
     ios: true
     image_path_ios: "assets/launcher/icon.png"
     image_path_android: "assets/launcher/icon.png"
-    adaptive_icon_background: "assets/launcher/background.png"
+    adaptive_icon_background: "assets/launcher/Iconbackground.png"
     adaptive_icon_foreground: "assets/launcher/foreground.png"
 
 
@@ -56,7 +56,6 @@ flutter:
   uses-material-design: true
   assets:
     - assets/diamond.png
-    - assets/background.png
     - assets/address.png
     - assets/fb.png
     - assets/tel.png
@@ -66,4 +65,4 @@ flutter:
     - assets/fraise.jpg
     - assets/decor.jpg
     - assets/tiles.jpg
-
+    - assets/background.png

@@ -73,25 +73,21 @@ class HomePage2 extends StatelessWidget {
                 fit: BoxFit.cover,
             )
               ),
-            ),
-          ),
-      ),
-
-            Container(
+            child: Container(
               height: MediaQuery.of(context).size.height* h,//0.2,
               padding: EdgeInsets.all(40.0),
               width: MediaQuery.of(context).size.width * w,//0.45,
-             // decoration: BoxDecoration(color: Color.fromARGB(55, 13, 71, 161)),
+              // decoration: BoxDecoration(color: Color.fromARGB(55, 13, 71, 161)),
               child: Center(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     SizedBox(
-                      height: MediaQuery.of(context).size.height*0.06
-                ),
+                        height: MediaQuery.of(context).size.height*0.06
+                    ),
                     Center(
                       child: Text(
-                          Title,
+                        Title,
                         style: TextStyle(color: Colors.white ,fontSize: 20.0,fontFamily: 'Josefin Sans'),
                         textAlign: TextAlign.center,
                       ),
@@ -100,6 +96,11 @@ class HomePage2 extends StatelessWidget {
                 ),
               ),
             ),
+            ),
+          ),
+      ),
+
+
         ]
        );
     }

@@ -118,6 +118,9 @@ class _UserRegisterState extends State<UserRegister>{
                               )*/
                           ),
                         ),
+                        SizedBox(
+                          height: 10,
+                        ),
                         TextField(
                           autofocus: false,
                           obscureText: false,
@@ -149,6 +152,9 @@ class _UserRegisterState extends State<UserRegister>{
                           ),
                           //validator: (value) => value.isEmpty ? 'GGG' : null,
                         ),
+                        SizedBox(
+                          height: 10,
+                        ),
                         TextField(
                           autofocus: false,
                           obscureText: false,
@@ -179,6 +185,9 @@ class _UserRegisterState extends State<UserRegister>{
                               )*/
                           ),
                         ),
+                        SizedBox(
+                          height: 10,
+                        ),
                         TextField(
                           autofocus: false,
                           obscureText: true,
@@ -208,6 +217,9 @@ class _UserRegisterState extends State<UserRegister>{
                                       color: Colors.greenAccent, width: 5.0)
                               )*/
                           ),
+                        ),
+                        SizedBox(
+                          height: 10,
                         ),
                         Row(
                           children: <Widget>[

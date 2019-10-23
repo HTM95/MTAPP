@@ -4,6 +4,7 @@ import 'home2.dart';
 import 'colors.dart';
 import 'model/product.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MenuPage extends StatelessWidget {
   final Category currentCategory;
@@ -24,12 +25,19 @@ class MenuPage extends StatelessWidget {
     sdata D = ModalRoute.of(context).settings.arguments;
     Category categ = D.title;
     String profil = D.userCateg;
+
+    FirebaseUser user1;
     return GestureDetector(
-      onTap: () => {
+      onTap: () async => {
+
         if (category == Category.Contact){
           Navigator.pushNamed(context, '/contactus' )// contact us
       }else if (category == Category.Logout){
-        FirebaseAuth.instance.signOut(),
+          user1 = await FirebaseAuth.instance.currentUser(),
+        if(user1!=null){
+        Firestore.instance.collection("utilisateurs").document(user1.uid).updateData({ 'devtoken': "",}),
+      },
+      FirebaseAuth.instance.signOut(),
         Navigator.of(context).pushNamed('/first_screen')
       }else
           {
@@ -37,23 +45,7 @@ class MenuPage extends StatelessWidget {
             Navigator.pushNamed(context, '/products', arguments: D)
           }
       },
-      child: /*category == currentCategory
-          ? Column(
-        children: <Widget>[
-          SizedBox(height: 16.0),
-          Text(
-            categoryString,
-            style: theme.textTheme.body2,
-            textAlign: TextAlign.center,
-          ),
-          SizedBox(height: 14.0),
-          Container(
-            width: 70.0,
-            height: 2.0,
-            color: kShrinePink400,
-          ),
-        ],
-      )*/
+      child:
         Padding(
         padding: EdgeInsets.symmetric(vertical: 16.0),
         child: Text(

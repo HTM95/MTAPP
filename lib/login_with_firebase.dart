@@ -118,6 +118,9 @@ class _UserLoginState extends State<UserLogin> {
                           _email = input;
                         },*/
                         ),
+                          SizedBox(
+                            height: 10,
+                          ),
                     TextField(
                       autofocus: false,
                       obscureText: true,
