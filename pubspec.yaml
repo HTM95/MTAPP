@@ -27,7 +27,8 @@ flutter_icons:
   ios: true # can specify file name here e.g. "My-Launcher-Icon"
   image_path_android: "assets/launcher/Icon2.png"
   image_path_ios: "assets/launcher/Icon2.png"
-
+  adaptive_icon_background: "assets/launcher/Iconbackground.png"
+  adaptive_icon_foreground: "assets/launcher/foreground2.png"
 
 
 
