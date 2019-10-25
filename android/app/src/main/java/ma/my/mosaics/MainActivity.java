@@ -1,4 +1,4 @@
-package com.example.mdc100series;
+package ma.my.mosaics;
 
 import android.os.Bundle;
 

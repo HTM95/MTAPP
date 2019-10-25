@@ -22,6 +22,12 @@
       "api_key": [
         {
           "current_key": "AIzaSyCmmTA-CCGy1xDxLH1HwF-ZTdGaKorMEgU"
+        },
+        {
+          "current_key": "AIzaSyCmmTA-CCGy1xDxLH1HwF-ZTdGaKorMEgU"
+        },
+        {
+          "current_key": "AIzaSyCmmTA-CCGy1xDxLH1HwF-ZTdGaKorMEgU"
         }
       ],
       "services": {
@@ -30,6 +36,13 @@
             {
               "client_id": "527818211584-snmh3gjgckchu4ca6umi0vpt5ouid01q.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "527818211584-hq8a5s8uk2g1ggb4og33rdqd9hbq724h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.mdc100series"
+              }
             }
           ]
         }
@@ -51,6 +64,12 @@
       "api_key": [
         {
           "current_key": "AIzaSyCmmTA-CCGy1xDxLH1HwF-ZTdGaKorMEgU"
+        },
+        {
+          "current_key": "AIzaSyCmmTA-CCGy1xDxLH1HwF-ZTdGaKorMEgU"
+        },
+        {
+          "current_key": "AIzaSyCmmTA-CCGy1xDxLH1HwF-ZTdGaKorMEgU"
         }
       ],
       "services": {
@@ -59,6 +78,13 @@
             {
               "client_id": "527818211584-snmh3gjgckchu4ca6umi0vpt5ouid01q.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "527818211584-hq8a5s8uk2g1ggb4og33rdqd9hbq724h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.mdc100series"
+              }
             }
           ]
         }
@@ -66,9 +92,9 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:527818211584:android:c9233f5ef928aaec",
+        "mobilesdk_app_id": "1:527818211584:android:3173c872be35d850ccb3e5",
         "android_client_info": {
-          "package_name": "com.example.mdc100series"
+          "package_name": "ma.my.mosaics"
         }
       },
       "oauth_client": [
@@ -80,6 +106,12 @@
       "api_key": [
         {
           "current_key": "AIzaSyCmmTA-CCGy1xDxLH1HwF-ZTdGaKorMEgU"
+        },
+        {
+          "current_key": "AIzaSyCmmTA-CCGy1xDxLH1HwF-ZTdGaKorMEgU"
+        },
+        {
+          "current_key": "AIzaSyCmmTA-CCGy1xDxLH1HwF-ZTdGaKorMEgU"
         }
       ],
       "services": {
@@ -88,6 +120,13 @@
             {
               "client_id": "527818211584-snmh3gjgckchu4ca6umi0vpt5ouid01q.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "527818211584-hq8a5s8uk2g1ggb4og33rdqd9hbq724h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.mdc100series"
+              }
             }
           ]
         }
