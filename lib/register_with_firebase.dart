@@ -49,12 +49,21 @@ class _UserRegisterState extends State<UserRegister>{
                 fit: BoxFit.cover,
               ),
             ),
-            padding: EdgeInsets.only(top: 25),
+            padding: EdgeInsets.only(top: 40),
             child: Center(
               child: Column(
                 children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.only(right: 300),
+                    child: IconButton(icon: Icon(
+                      Icons.arrow_back,
+                      size: 30,
+                      color: Colors.black,
+                    ), onPressed:() {Navigator.pop(context);}
+                    ),
+                  ),
                   SizedBox(
-                    height: 80,
+                    height: 60,
                   ),
                   Center(
                     child: SizedBox(
@@ -361,7 +370,7 @@ class _UserRegisterState extends State<UserRegister>{
           FirebaseUser user = await FirebaseAuth.instance
               .createUserWithEmailAndPassword(
               email: emailController.text.trim(), password: pwdController.text);
-          Toast.show('Inscription réussite', context, duration: Toast.LENGTH_LONG,
+          Toast.show('Inscription réussie', context, duration: Toast.LENGTH_LONG,
               gravity: Toast.BOTTOM);
           FirebaseUser user1 = await FirebaseAuth.instance.currentUser();
           Firestore.instance.collection('utilisateurs').document(user1.uid)

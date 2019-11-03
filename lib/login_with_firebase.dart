@@ -39,12 +39,21 @@ class _UserLoginState extends State<UserLogin> {
             ),
           ),
           //color: Colors.white,
-          padding: EdgeInsets.only(top: 60),
+          padding: EdgeInsets.only(top: 40),
           child: Center(
             child: Column(
               children: <Widget>[
+                Container(
+                  padding: EdgeInsets.only(right: 300),
+                  child: IconButton(icon: Icon(
+                    Icons.arrow_back,
+                    size: 30,
+                    color: Colors.black,
+                  ), onPressed:() {Navigator.pop(context);}
+                  ),
+                ),
                 SizedBox(
-                  height: 130,
+                  height: 100,
                 ),
                 Center(
                   child: SizedBox(

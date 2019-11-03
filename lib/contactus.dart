@@ -34,11 +34,20 @@ class _ContactUsState extends State<ContactUs>{
       ),*/
       body: Center(
         child: Container(
-          margin: const EdgeInsets.only(left: 70),
+          margin: const EdgeInsets.only(left: 100),
           child: Column(
             children: <Widget>[
+              Container(
+                padding: EdgeInsets.only(right: 90, top: 50),
+                child: IconButton(icon: Icon(
+                  Icons.arrow_back,
+                  size: 30,
+                  color: Colors.black,
+                ), onPressed:() {Navigator.pop(context);}
+                ),
+              ),
               SizedBox(
-                height: 110,
+                height: 90,
               ),
               Container(
                 //margin: const EdgeInsets.only(left: 90),
