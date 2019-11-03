@@ -48,9 +48,25 @@ class _FrontLayer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            children: <Widget>[
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.25,
+              ),
+              Text("Veuillez choisir un produit",
+                style: TextStyle(
+                    fontSize: 20,
+                    fontFamily: "Quicksand",
+                    ),)
+            ],
+          ),
+
           // TODO: Add a GestureDetector (104)
           SizedBox(
-          height: 60,
+          height: 15,
       ),
           Expanded(
             child: child,
