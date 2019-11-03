@@ -36,10 +36,19 @@ class _EmailConfirmationState extends State<EmailConfirmation> {
             ),
           ),
           //color: Colors.white,
-          padding: EdgeInsets.only(top: 60),
+          padding: EdgeInsets.only(top: 40),
           child: Center(
             child: Column(
               children: <Widget>[
+                Container(
+                  padding: EdgeInsets.only(right: 300),
+                  child: IconButton(icon: Icon(
+                    Icons.arrow_back,
+                    size: 30,
+                    color: Colors.black,
+                  ), onPressed:() {Navigator.pop(context);}
+                  ),
+                ),
                 SizedBox(
                   height: 80,
                 ),
