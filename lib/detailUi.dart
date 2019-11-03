@@ -202,7 +202,7 @@ class _ProductDetailState extends State<ProductDetailUI> with TickerProviderStat
                     child : Container(
                     color: Colors.indigo,
                     child: Center(
-                    child: Icon(Icons.shopping_basket,color: Colors.white)
+                    child: Icon(Icons.shopping_cart,color: Colors.white)
                     ),
                     ),
                     ),

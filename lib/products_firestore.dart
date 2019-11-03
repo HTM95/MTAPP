@@ -54,11 +54,12 @@ class _ProductsPageStateFS extends State<ProductsPageFS>{
                       Text(
                           document['prix' + profil].toString() + ' DH'
                       ),
+
                       IconButton(
                         // padding: EdgeInsets.fromLTRB(130.0, 0.0, 0.0, 0.0),
                         //iconSize: 25.0,
                         icon: Icon(
-                          Icons.shopping_basket,
+                          Icons.shopping_cart,
                           size: MediaQuery
                               .of(context)
                               .size
