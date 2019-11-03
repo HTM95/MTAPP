@@ -10,6 +10,14 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash>{
 
   @override
+  void initState() {
+    super.initState();
+    new Future.delayed(const Duration(seconds: 3), () {
+      Navigator.pushNamed(context, '/home2');
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
@@ -24,19 +32,6 @@ class _SplashState extends State<Splash>{
                 },
                 padding: EdgeInsets.all(50.0),
                 child: Image.asset('assets/mosaic_logo.png')
-        /*child: InkWell(
-          child: new Tab(
-            icon: new Image.asset('assets/mosaic_logo.png'),
-        ),*/
-        /*child: IconButton(
-          icon: new Image.asset('assets/mosaic_logo.png'),
-          onPressed: () {
-            Navigator.of(context).pushNamed('/contactus');
-          },
-        ),*/
-        /*child: new Tab(
-          icon: new Image.asset('assets/mosaic_logo.png'),
-        ),*/
       ),
     ),
     ),
