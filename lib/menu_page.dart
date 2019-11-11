@@ -32,7 +32,7 @@ class MenuPage extends StatelessWidget {
 
         if (category == Category.Contact){
           Navigator.pushNamed(context, '/contactus' )// contact us
-      }else if (category == Category.Logout){
+      }else if (category == Category.Deconnexion){
           user1 = await FirebaseAuth.instance.currentUser(),
         if(user1!=null){
         Firestore.instance.collection("utilisateurs").document(user1.uid).updateData({ 'devtoken': "",}),

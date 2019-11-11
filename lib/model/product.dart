@@ -14,7 +14,7 @@
 
 import 'package:flutter/foundation.dart';
 
-enum Category { Carreaux, Frises, Decors, Contact, Logout }
+enum Category { Carreaux, Frises, Decors, Contact, Deconnexion }
 
 class Product {
   const Product({

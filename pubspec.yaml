@@ -6,7 +6,7 @@ dependencies:
   random_string: ^1.1.0
   firebase_auth: ^0.11.1+8
   cached_network_image: ^1.1.1
-  firebase_messaging:
+  firebase_messaging: ^5.1.8
   flutter:
     sdk: flutter
   intl: ^0.15.6
