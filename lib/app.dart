@@ -83,35 +83,9 @@ class ShrineApp extends StatefulWidget {
 
 class _ShrineAppState extends State<ShrineApp> {
 
-  FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
-
   @override
   void initState() {
     super.initState();
-    firebaseCloudMessaging_Listeners();
-  }
-
-  void firebaseCloudMessaging_Listeners() {
-    //if (Platform.isIOS) iOS_Permission();
-
-    _firebaseMessaging.getToken().then((token){
-      print(token);
-    });
-
-    _firebaseMessaging.configure(
-      onMessage: (Map<String, dynamic> message) async {
-        print('MSG');
-        print('on message $message');
-      },
-      onResume: (Map<String, dynamic> message) async {
-        print('RSM');
-        print('on resume $message');
-      },
-      onLaunch: (Map<String, dynamic> message) async {
-        print('LNC');
-        print('on launch $message');
-      },
-    );
   }
 
   Category _currentCategory = Category.Carreaux;

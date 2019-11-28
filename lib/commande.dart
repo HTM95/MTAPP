@@ -26,7 +26,7 @@ class Commande_Repository {
                 child: new Text(
                   'Commander', style: TextStyle(color: Colors.white),),
                 onPressed: () async {
-
+                  Navigator.of(context).pop();
                   if (int.parse(_textFieldController.text.toString()) <=
                       document['qte']) {
                     FirebaseUser user = await FirebaseAuth.instance
